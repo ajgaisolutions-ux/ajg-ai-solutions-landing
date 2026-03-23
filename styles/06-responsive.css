@@ -488,3 +488,34 @@
 @media (max-width: 768px) {
   .btn { min-height: 56px !important; }
 }
+
+/* hero_h1_size_movil: h1 más grande para aprovechar el ancho en 360-430px */
+@media (max-width: 768px) {
+  h1 { font-size: clamp(38px, 11vw, 52px) !important; }
+}
+
+/* line_height_body_movil: más espacio entre líneas en textos de lectura */
+@media (max-width: 768px) {
+  .hero-copy, .flow-card-desc, .pc-text { line-height: 1.7 !important; }
+}
+
+/* metric_num_movil: números de métricas con más impacto visual */
+@media (max-width: 768px) {
+  .flow-metric-num, .metric-num { font-size: 1.75rem !important; }
+}
+
+/* hero_badge_movil: badge/chip del hero legible en pantalla chica */
+@media (max-width: 768px) {
+  .badge, .chip { font-size: 12px !important; }
+}
+
+/* pill_tags_movil: pills de tecnología con tamaño mínimo legible */
+@media (max-width: 768px) {
+  .flow-card-pill, .stack-chip { font-size: 12px !important; }
+}
+
+/* gap_sections_movil: separación mínima 12px en todos los grids */
+@media (max-width: 768px) {
+  .problem-cards, .cases-cards, .process-grid, .transform-grid,
+  .benefits-grid, .stack-grid, .faq-grid { gap: 12px !important; }
+}
