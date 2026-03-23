@@ -489,6 +489,51 @@
   .btn { min-height: 56px !important; }
 }
 
+/* transform_label_movil: etiquetas ANTES/DESPUÉS legibles en mobile */
+@media (max-width: 768px) {
+  .transform-label, .before-label, .after-label { font-size: 11px !important; }
+}
+
+/* transform_text_movil: texto antes/después con tamaño y espaciado legible */
+@media (max-width: 768px) {
+  .transform-text { font-size: 14px !important; line-height: 1.7 !important; }
+}
+
+/* process_title_movil: título de proceso proporcional al ancho mobile */
+@media (max-width: 768px) {
+  .process-title { font-size: clamp(20px, 5.5vw, 24px) !important; }
+}
+
+/* result_card_min_height: quitar altura mínima fija en 1 columna mobile */
+@media (max-width: 768px) {
+  .result-card { min-height: 0 !important; }
+}
+
+/* footer_padding_movil: reducir margen superior excesivo en mobile */
+@media (max-width: 768px) {
+  footer { margin-top: 40px !important; padding: 28px 0 32px !important; }
+}
+
+/* cta_panel_movil: más aire interno en el panel de formulario final */
+@media (max-width: 768px) {
+  .cta-panel { padding: 28px !important; }
+}
+
+/* faq_q_movil: preguntas del FAQ con tamaño y altura de línea óptimos */
+@media (max-width: 768px) {
+  .faq-q { font-size: 15px !important; line-height: 1.45 !important; }
+}
+
+/* faq_a_movil: respuestas del acordeón con lectura cómoda en pantalla chica */
+@media (max-width: 768px) {
+  .faq-a { font-size: 14px !important; line-height: 1.8 !important; }
+}
+
+/* hero_copy_size_movil: subtítulo del hero proporcional en pantallas <480px */
+@media (max-width: 480px) {
+  .hero-copy { font-size: 17px !important; }
+}
+
 /* hero_h1_size_movil: h1 más grande para aprovechar el ancho en 360-430px */
 @media (max-width: 768px) {
   h1 { font-size: clamp(38px, 11vw, 52px) !important; }
