@@ -570,7 +570,6 @@
   #herramientas .bento-card:not(.bento-large) { display: none !important; }
   #herramientas .bento-grid { grid-template-columns: 1fr !important; gap: 12px !important; }
   #herramientas .bento-large { grid-column: span 1 !important; min-height: 130px !important; }
-  #herramientas .bento-large .bento-badge { display: none !important; }
 }
 
 /* siguiente_paso_movil: layout de 1 columna con espaciado correcto */
