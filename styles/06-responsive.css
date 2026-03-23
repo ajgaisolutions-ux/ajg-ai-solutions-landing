@@ -564,3 +564,27 @@
   .problem-cards, .cases-cards, .process-grid, .transform-grid,
   .benefits-grid, .stack-grid, .faq-grid { gap: 12px !important; }
 }
+
+/* herramientas_solo_dos_movil: mostrar solo n8n y Claude Code en mobile */
+@media (max-width: 768px) {
+  #herramientas .bento-card:not(.bento-large) { display: none !important; }
+  #herramientas .bento-grid { grid-template-columns: 1fr !important; gap: 12px !important; }
+  #herramientas .bento-large { grid-column: span 1 !important; }
+}
+
+/* siguiente_paso_movil: layout de 1 columna con espaciado correcto */
+@media (max-width: 768px) {
+  .cta-shell {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding: 40px 0 !important;
+    border-radius: 20px !important;
+  }
+  .cta-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+    padding: 0 20px !important;
+  }
+  .cta-grid h2 { font-size: clamp(22px, 6vw, 30px) !important; line-height: 1.2 !important; }
+  .cta-panel { border-radius: 20px !important; }
+}
