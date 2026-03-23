@@ -305,4 +305,65 @@ export function initMotionEffects() {
   })();
 
   // ── Cursor border glow on cards — disabled (replaced by ge-glow aurora) ──
+
+  // ── Flow section word-by-word reveal ──
+  (function() {
+    // Helper: walk element, replace text nodes with .mj-word spans in-place
+    function splitElementWords(el) {
+      const words = [];
+      const childNodes = [...el.childNodes];
+      childNodes.forEach(node => {
+        if (node.nodeType === Node.TEXT_NODE) {
+          const frag = document.createDocumentFragment();
+          node.textContent.split(/(\s+)/).forEach(chunk => {
+            if (/\S/.test(chunk)) {
+              const s = document.createElement('span');
+              s.className = 'mj-word';
+              s.textContent = chunk;
+              frag.appendChild(s);
+              words.push(s);
+            } else {
+              frag.appendChild(document.createTextNode(chunk));
+            }
+          });
+          el.replaceChild(frag, node);
+        } else if (node.nodeType === Node.ELEMENT_NODE) {
+          words.push(...splitElementWords(node));
+        }
+      });
+      return words;
+    }
+
+    // Collect all word spans per card-wrap
+    const cardWraps = document.querySelectorAll('#flowSection .flow-v2-card-wrap');
+    cardWraps.forEach(wrap => {
+      const allWords = [];
+
+      // Title card: split the h2
+      const h2 = wrap.querySelector('.flow-v2-heading');
+      if (h2) allWords.push(...splitElementWords(h2));
+
+      // Step cards: split .flow-card-title and .flow-card-desc
+      const title = wrap.querySelector('.flow-card-title');
+      if (title) allWords.push(...splitElementWords(title));
+
+      const desc = wrap.querySelector('.flow-card-desc');
+      if (desc) allWords.push(...splitElementWords(desc));
+
+      if (!allWords.length) return;
+
+      // Observe the card-wrap; when visible stagger words in
+      const obs = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          allWords.forEach((w, i) => {
+            setTimeout(() => w.classList.add('in'), i * 38);
+          });
+          obs.unobserve(entry.target);
+        });
+      }, { threshold: 0.18 });
+
+      obs.observe(wrap);
+    });
+  })();
 }
