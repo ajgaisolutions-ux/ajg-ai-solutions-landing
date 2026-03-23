@@ -1,0 +1,137 @@
+/* ═══════════════════════════════════════════════════════
+   sections/problem.css — AJG AI Solutions
+   Problem section
+   ═══════════════════════════════════════════════════════ */
+
+.problem-shell {
+  border-radius: 0;
+  border: none;
+  background: linear-gradient(180deg, rgba(255,255,255,.03) 0%, rgba(255,255,255,0) 100%);
+  padding: 40px 0;
+  margin-left: -2rem;
+  margin-right: -2rem;
+}
+.problem-shell > * {
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.problem-grid {
+  display: grid;
+  grid-template-columns: minmax(0,.9fr) minmax(0,1.1fr);
+  gap: 24px;
+  align-items: center;
+}
+
+.problem-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 16px;
+}
+
+.problem-card {
+  border-radius: 28px;
+  border: 1px solid rgba(255,255,255,.18);
+  background: rgba(10,22,40,0.42);
+  -webkit-backdrop-filter: blur(16px) saturate(135%);
+  backdrop-filter: blur(16px) saturate(135%);
+  box-shadow: 0 10px 40px rgba(0,0,0,.18), inset 0 1px 0 rgba(255,255,255,.08);
+  padding: 22px;
+  color: rgba(255,255,255,.86);
+  line-height: 1.68;
+  transition: .3s ease;
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* ── Problem card visual elements ── */
+.pc-visual {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.pc-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(56,189,248,0.07);
+  border: 1px solid rgba(56,189,248,0.14);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.pc-icon--warn {
+  background: rgba(248,113,113,0.07);
+  border-color: rgba(248,113,113,0.14);
+}
+.pc-badge {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+.pc-badge-alert {
+  background: rgba(248,113,113,0.10);
+  border: 1px solid rgba(248,113,113,0.22);
+  color: #f87171;
+}
+.pc-badge-muted {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.10);
+  color: rgba(255,255,255,0.42);
+}
+.pc-apps {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+.pc-app {
+  width: 26px;
+  height: 26px;
+  border-radius: 7px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.10);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pc-app-sep {
+  font-size: 10px;
+  color: rgba(255,255,255,0.20);
+  letter-spacing: 0.05em;
+  padding: 0 2px;
+}
+.pc-log {
+  font-family: monospace;
+  font-size: 9px;
+  color: rgba(248,113,113,0.75);
+  background: rgba(248,113,113,0.06);
+  border: 1px solid rgba(248,113,113,0.14);
+  border-radius: 4px;
+  padding: 4px 9px;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+.pc-text {
+  font-size: 13.5px;
+  line-height: 1.62;
+  color: rgba(255,255,255,0.78);
+}
+.problem-card:hover {
+  transform: translateY(-4px);
+  background: rgba(255,255,255,.05);
+  border-color: rgba(255,255,255,.14);
+}
+
+/* Prob-sol layout */
+.prob-sol-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+.prob-sol-right { padding-top: 4px; border-left: 1px solid rgba(255,255,255,.07); padding-left: 64px; }

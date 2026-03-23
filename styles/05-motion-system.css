@@ -1,0 +1,190 @@
+/* ═══════════════════════════════════════════════════════
+   05-motion-system.css — AJG AI Solutions
+   All motion/animation — guarded by prefers-reduced-motion
+   ═══════════════════════════════════════════════════════ */
+
+/* ── tcard-m slide-in animation (not motion-guarded — layout critical) ── */
+@keyframes tcardmIn {
+  from { opacity: 0.35; transform: translateX(16px); }
+  to   { opacity: 1;    transform: translateX(0); }
+}
+.tcard-m.is-entering {
+  animation: tcardmIn 0.28s cubic-bezier(0.25,0.46,0.45,0.94) both;
+}
+
+/* ── Bento badge pulse (live indicator) ── */
+@keyframes pulseLive {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.45; }
+}
+.bento-badge-live { animation: pulseLive 2.2s ease-in-out infinite; }
+
+/* ── Bento card glow (n8n main card) ── */
+@keyframes glowPrincipal {
+  0%, 100% {
+    box-shadow: 0 0 18px rgba(56,189,248,0.08), 0 4px 24px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.07);
+    border-color: rgba(56,189,248,0.22);
+  }
+  50% {
+    box-shadow: 0 0 38px rgba(56,189,248,0.30), 0 4px 24px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.10);
+    border-color: rgba(56,189,248,0.50);
+  }
+}
+.bento-main {
+  animation: glowPrincipal 3.5s ease-in-out infinite;
+  position: relative;
+}
+
+/* ── Bento stagger entrance — transition override ── */
+.bento-card {
+  transition: opacity 0.55s ease, transform 0.55s ease,
+              border-color 0.25s ease, background 0.25s ease !important;
+}
+
+/* ── Bento icon hover ── */
+.bento-icon {
+  transition: transform 0.22s ease, box-shadow 0.22s ease,
+              background 0.22s ease, border-color 0.22s ease !important;
+}
+.bento-card:hover .bento-icon {
+  transform: scale(1.15);
+  background: rgba(255,255,255,0.10);
+  border-color: rgba(255,255,255,0.24);
+  box-shadow: 0 0 14px rgba(255,255,255,0.13);
+}
+
+/* ── Tool dot animation ── */
+@keyframes toolDot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(.85)} }
+
+/* ══════════════════════════════════════════════════════
+   Motion — guarded by prefers-reduced-motion
+   ══════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: no-preference) {
+
+  /* Page entrance */
+  @keyframes mj-page-in {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: none; }
+  }
+  .page { animation: mj-page-in .65s cubic-bezier(.22,.8,.36,1) both; }
+
+  /* Hero glow blobs */
+  .hg {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(72px);
+    pointer-events: none;
+  }
+  .hg1 {
+    width: 75%; height: 85%;
+    top: -20%; left: -10%;
+    background: radial-gradient(ellipse, rgba(28,80,210,0.92) 0%, rgba(20,60,180,0.5) 40%, transparent 70%);
+    animation: hg1move 14s ease-in-out infinite;
+  }
+  .hg2 {
+    width: 60%; height: 70%;
+    top: -25%; right: 0%;
+    background: radial-gradient(ellipse, rgba(45,110,255,0.70) 0%, rgba(30,80,220,0.35) 45%, transparent 70%);
+    animation: hg2move 11s ease-in-out infinite;
+  }
+  .hg3 {
+    width: 55%; height: 60%;
+    bottom: 5%; left: 20%;
+    background: radial-gradient(ellipse, rgba(18,50,190,0.60) 0%, rgba(15,40,160,0.25) 50%, transparent 72%);
+    animation: hg3move 16s ease-in-out infinite;
+  }
+  @keyframes hg1move {
+    0%,100% { transform: translate(0,0) scale(1); }
+    33%      { transform: translate(6%,10%) scale(1.08); }
+    66%      { transform: translate(-4%,5%) scale(0.96); }
+  }
+  @keyframes hg2move {
+    0%,100% { transform: translate(0,0) scale(1); }
+    40%      { transform: translate(-9%,-7%) scale(1.1); }
+    70%      { transform: translate(-3%,4%) scale(1.03); }
+  }
+  @keyframes hg3move {
+    0%,100% { transform: translate(0,0) scale(1); }
+    50%      { transform: translate(5%,-8%) scale(1.06); }
+  }
+
+  /* Hero word-by-word */
+  .mj-word {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity .46s cubic-bezier(.22,.8,.36,1),
+                transform .46s cubic-bezier(.22,.8,.36,1);
+  }
+  .mj-word.in { opacity: 1; transform: none; }
+
+  /* Stagger children */
+  .mj-sch {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity .5s ease, transform .5s ease;
+  }
+  .mj-sch.in { opacity: 1; transform: none; }
+
+  /* Nav link underline draw */
+  nav a { position: relative; }
+  nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -3px; left: 0;
+    width: 0; height: 1px;
+    background: var(--cyan);
+    transition: width .32s cubic-bezier(.22,.8,.36,1);
+  }
+  nav a:hover::after { width: 100%; }
+
+  /* 3D card tilt base */
+  .problem-card, .case-card, .process-card, .transform-card {
+    transition: transform .18s ease, box-shadow .18s ease;
+    will-change: transform;
+  }
+
+  /* CTA orb ambient pulse */
+  @keyframes mj-orb-pulse {
+    0%, 100% { opacity: .55; transform: scale(1); }
+    50%       { opacity: .82; transform: scale(1.13); }
+  }
+  .cta-orb-a { animation: mj-orb-pulse 7s  ease-in-out infinite; }
+  .cta-orb-b { animation: mj-orb-pulse 9s  ease-in-out infinite reverse; }
+
+  /* Brand-mark glow pulse */
+  @keyframes mj-mark-pulse {
+    0%, 100% { filter: drop-shadow(0 2px 12px rgba(34,120,255,.35)) drop-shadow(0 0 22px rgba(6,182,212,.20)); }
+    50%       { filter: drop-shadow(0 2px 18px rgba(34,120,255,.55)) drop-shadow(0 0 36px rgba(34,211,238,.40)); }
+  }
+  .brand-mark img { animation: mj-mark-pulse 4s ease-in-out infinite; }
+
+  /* Premium card transitions */
+  .card, .problem-card, .benefit-card, .process-card,
+  .faq-item, .result-card, .action, .mini-item, .metric,
+  .wf-field, .wf-note, .tcard, .tcard-m {
+    transition: transform 0.65s cubic-bezier(0.34,1.56,0.64,1), opacity 0.55s cubic-bezier(0.25,0.46,0.45,0.94), filter 0.55s ease, border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  /* Sticky nav transition */
+  header {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 40 !important;
+    transition: transform 0.3s ease !important;
+  }
+  .nav-hidden {
+    transform: translateY(-100%) !important;
+  }
+
+} /* end prefers-reduced-motion */
+
+/* Sticky header (not motion-guarded — layout) */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+.nav-hidden {
+  transform: translateY(-100%);
+}

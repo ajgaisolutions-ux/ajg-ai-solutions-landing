@@ -1,0 +1,128 @@
+/* ═══════════════════════════════════════════════════════
+   04-glass-system.css — AJG AI Solutions
+   Consolidated glassmorphism system
+   ═══════════════════════════════════════════════════════ */
+
+:root {
+  --glass-bg: rgba(10, 22, 40, 0.55);
+  --glass-border: rgba(255, 255, 255, 0.10);
+  --glass-border-top: rgba(255, 255, 255, 0.20);
+  --glass-blur: blur(16px) saturate(140%);
+  --glass-shadow: 0 8px 32px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.08);
+  --glass-hover-bg: rgba(255, 255, 255, 0.055);
+  --glass-hover-border: rgba(255, 255, 255, 0.18);
+}
+
+.glass {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-top-color: var(--glass-border-top);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: var(--glass-shadow);
+}
+
+.glass:hover {
+  background: var(--glass-hover-bg);
+  border-color: var(--glass-hover-border);
+}
+
+/* Apply glass to key components */
+.problem-card, .case-card, .process-card,
+.faq-item, .result-card, .card, .mini-item,
+.metric, .action, .tcard, .tcard-m, .mid-cta-inner {
+  background: var(--glass-bg) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-top-color: var(--glass-border-top) !important;
+  backdrop-filter: var(--glass-blur) !important;
+  -webkit-backdrop-filter: var(--glass-blur) !important;
+  box-shadow: var(--glass-shadow) !important;
+}
+
+/* Hover refinement */
+.card:hover, .problem-card:hover,
+.process-card:hover, .faq-item:hover, .result-card:hover,
+.action:hover, .mini-item:hover, .metric:hover {
+  background: rgba(255,255,255,0.055) !important;
+  border-color: rgba(255,255,255,0.18) !important;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.28) !important;
+}
+
+/* Header — transparent */
+header {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border-bottom: none !important;
+}
+
+/* .btn.secondary glassmorphism */
+.btn.secondary {
+  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
+}
+.btn.secondary:hover {
+  border-color: rgba(255,255,255,.5) !important;
+  background: rgba(255,255,255,.05) !important;
+}
+
+/* Mid-CTA banner */
+.mid-cta-inner {
+  background: rgba(255,255,255,0.03) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(255,255,255,0.08) !important;
+  border-radius: 16px;
+}
+
+/* Transform cards */
+.transform-card {
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  background: rgba(8, 14, 35, 0.6) !important;
+  border: 1px solid rgba(255, 255, 255, 0.07) !important;
+}
+
+/* Flow card display */
+#flow-card-display {
+  background: rgba(255,255,255,0.04) !important;
+  backdrop-filter: blur(20px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(140%) !important;
+  border: 1px solid rgba(255,255,255,0.09) !important;
+  border-radius: 20px !important;
+  padding: 2.5rem !important;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.08) !important;
+  min-height: 280px !important;
+  position: relative !important;
+  overflow: hidden !important;
+  transform: none !important;
+  opacity: 1 !important;
+  width: auto !important;
+  max-width: none !important;
+}
+#flow-card-display::before {
+  content: '';
+  position: absolute;
+  top: -40%; right: -20%;
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(56,189,248,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* CTA section inner */
+#cta .inner, #cta section > .inner {
+  background: rgba(255,255,255,0.04) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255,255,255,0.1) !important;
+  border-radius: 28px;
+}
+
+/* wf-field and wf-note glass */
+.wf-field, .wf-note {
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  background: rgba(10,22,40,0.42) !important;
+  border: 1px solid rgba(255,255,255,.10) !important;
+  box-shadow: 0 10px 40px rgba(0,0,0,.18), inset 0 1px 0 rgba(255,255,255,.08) !important;
+}

@@ -1,0 +1,95 @@
+/* ═══════════════════════════════════════════════════════
+   sections/hero.css — AJG AI Solutions
+   Hero section styles
+   ═══════════════════════════════════════════════════════ */
+
+.hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0,1.02fr) minmax(0,.98fr);
+  gap: 42px;
+  align-items: center;
+  padding: 22px 0 88px;
+  min-height: calc(100vh - 82px);
+  isolation: isolate;
+  overflow: hidden;
+}
+
+/* Hero slim (no widget) */
+.hero-slim {
+  grid-template-columns: 1fr !important;
+  min-height: auto !important;
+  padding: 22px 2rem 48px;
+  text-align: center;
+  align-items: center;
+  justify-items: center;
+}
+.hero-slim > .hero-bg,
+.hero-slim > .bg-overlay { max-width: none !important; width: 100% !important; margin: 0 !important; padding: 0 !important; }
+.hero-slim > div[style*="z-index:10"] { max-width: 860px; margin: 0 auto; width: 100%; }
+.hero-slim h1 { font-size: clamp(2.4rem, 5vw, 3.8rem); text-align: center; margin-left: auto; margin-right: auto; }
+.hero-slim .eyebrow { text-align: center; justify-content: center; }
+.hero-slim .hero-copy { text-align: center; margin-left: auto; margin-right: auto; max-width: 620px; }
+.hero-slim .hero-actions { justify-content: center; }
+
+.hero-copy {
+  margin-top: 22px;
+  max-width: 690px;
+  color: var(--muted);
+  font-size: 20px;
+  line-height: 1.72;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-actions {
+  margin-top: 26px;
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.hero-chips {
+  margin-top: 18px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Hero visual wrap (original, kept for fallback) */
+.hero-visual-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin-left: auto;
+  padding: 0;
+  min-height: 0;
+  overflow: hidden;
+  border-radius: 40px;
+}
+.hero-orb-a,.hero-orb-b {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(60px);
+  pointer-events: none;
+}
+.hero-orb-a {
+  left: 8px;
+  top: 120px;
+  width: 170px;
+  height: 170px;
+  background: rgba(53,216,255,.14);
+}
+.hero-orb-b {
+  right: 10px;
+  bottom: 80px;
+  width: 200px;
+  height: 200px;
+  background: rgba(45,107,255,.14);
+}
+
+/* Hero poster fallback (unused, kept as safety) */
+.hero-stage__viewer[data-loading="true"] {
+  background: radial-gradient(ellipse at 60% 40%, rgba(30,80,208,0.4) 0%, #050816 70%);
+}

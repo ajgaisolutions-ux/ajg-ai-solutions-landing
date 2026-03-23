@@ -1,0 +1,100 @@
+/* ═══════════════════════════════════════════════════════
+   sections/cta.css — AJG AI Solutions
+   CTA section and mid-CTA strip
+   ═══════════════════════════════════════════════════════ */
+
+/* ── Final CTA section ── */
+.cta-shell {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0;
+  border: none;
+  border-top: 1px solid rgba(255,255,255,.10);
+  border-bottom: 1px solid rgba(255,255,255,.10);
+  background: linear-gradient(135deg, rgba(53,216,255,.12) 0%, rgba(30,80,208,.12) 50%, rgba(255,255,255,.03) 100%);
+  padding: 50px 0;
+  margin-left: -2rem;
+  margin-right: -2rem;
+}
+.cta-shell > .cta-grid {
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.cta-orb-a,.cta-orb-b {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(60px);
+  pointer-events: none;
+}
+.cta-orb-a {
+  right: 0;
+  top: 0;
+  width: 210px;
+  height: 210px;
+  background: rgba(53,216,255,.22);
+  animation: floatB 7s ease-in-out infinite;
+}
+.cta-orb-b {
+  left: 0;
+  bottom: 0;
+  width: 220px;
+  height: 220px;
+  background: rgba(30,80,208,.22);
+  animation: floatA 8s ease-in-out infinite;
+}
+
+.cta-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0,1fr) minmax(0,.9fr);
+  gap: 28px;
+  align-items: center;
+}
+
+.cta-panel {
+  border-radius: 32px;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(9,17,34,.85);
+  padding: 24px;
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+}
+.cta-panel .btn { width: 100%; }
+
+.cta-note {
+  border-radius: 24px;
+  border: 1px solid rgba(255,255,255,.08);
+  background: rgba(255,255,255,.04);
+  padding: 16px;
+  font-size: 14px;
+  line-height: 1.72;
+  color: rgba(255,255,255,.62);
+  margin-top: 14px;
+}
+
+/* ── Mid-page CTA strip ── */
+.mid-cta-strip { padding-top: 12px !important; padding-bottom: 12px !important; }
+
+.mid-cta-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 28px 40px;
+  border-radius: 18px;
+  border: 1px solid rgba(53,216,255,.30);
+  background: linear-gradient(100deg, rgba(53,216,255,.10) 0%, rgba(30,80,208,.14) 100%);
+  box-shadow: 0 0 40px rgba(53,216,255,.06);
+}
+
+.mid-cta-text {
+  font-size: 17px;
+  font-weight: 500;
+  color: rgba(255,255,255,.82);
+  line-height: 1.4;
+  max-width: 480px;
+}

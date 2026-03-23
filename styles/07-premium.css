@@ -1,0 +1,289 @@
+/* ═══════════════════════════════════════════════════════
+   07-premium.css — AJG AI Solutions
+   Custom cursor · Hero blobs · Card shine · Micro-interacciones
+   ═══════════════════════════════════════════════════════ */
+
+/* ── Full-page mesh gradient shader background ── */
+#bg-shader-wrap {
+  position: fixed;
+  inset: 0;
+  z-index: 10;           /* above sections (z:2), below nav (z:50) */
+  pointer-events: none;
+  mix-blend-mode: screen; /* blends color into dark backgrounds */
+  opacity: 0.50;          /* JS overrides this on scroll */
+  will-change: opacity;
+}
+#bg-shader-wrap canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+
+/* ── Glowing border effect (mouse-tracking) ── */
+.problem-card,
+.case-card,
+.process-card,
+.transform-card,
+.bento-card,
+.faq-item,
+.cta-panel,
+.flow-metric,
+.flow-card,
+.tcard,
+.tcard-m,
+.result-card,
+.flow-v2-card {
+  position: relative;   /* required for .ge-glow absolute positioning */
+  --ge-start:  0;
+  --ge-active: 0;
+  --ge-spread: 30;
+  --ge-border: 1.5px;
+}
+
+/* overflow:hidden clips the glow border — override for affected cards */
+#flow-card-display,
+.tcard,
+.tcard-m,
+.flow-v2-card {
+  overflow: visible !important;
+}
+
+
+.ge-glow {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  z-index: 0;
+}
+
+.ge-glow::after {
+  content: '';
+  border-radius: inherit;
+  position: absolute;
+  inset: calc(-1 * var(--ge-border, 1.5px));
+  border: var(--ge-border, 1.5px) solid transparent;
+
+  /* Cyan-indigo aurora gradient — fixed so it shifts as mouse moves */
+  background:
+    radial-gradient(circle, #38bdf8 10%, transparent 20%),
+    radial-gradient(circle at 40% 40%, #818cf8 5%, transparent 15%),
+    radial-gradient(circle at 60% 60%, #0ea5e9 10%, transparent 20%),
+    repeating-conic-gradient(
+      from 236.84deg at 50% 50%,
+      #38bdf8  0%,
+      #818cf8  calc(25% / 5),
+      #0ea5e9  calc(50% / 5),
+      #38bdf8  calc(75% / 5),
+      #818cf8  calc(100% / 5)
+    );
+  background-attachment: fixed;
+
+  opacity: calc(var(--ge-active) * 0.55);
+  transition: opacity 0.3s ease;
+
+  /* Mask: only show through the border area, in the conic arc toward mouse */
+  -webkit-mask-clip: padding-box, border-box;
+          mask-clip: padding-box, border-box;
+  -webkit-mask-composite: intersect;
+          mask-composite: intersect;
+  -webkit-mask-image:
+    linear-gradient(transparent, transparent),
+    conic-gradient(
+      from calc((var(--ge-start) - var(--ge-spread)) * 1deg),
+      transparent 0deg,
+      white,
+      transparent calc(var(--ge-spread) * 2deg)
+    );
+  mask-image:
+    linear-gradient(transparent, transparent),
+    conic-gradient(
+      from calc((var(--ge-start) - var(--ge-spread)) * 1deg),
+      transparent 0deg,
+      white,
+      transparent calc(var(--ge-spread) * 2deg)
+    );
+}
+
+/* ── Glass cards — same tint as liquid buttons ── */
+.problem-card,
+.case-card,
+.process-card,
+.transform-card,
+.bento-card {
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.22) 0%,
+    rgba(56,189,248,0.18) 100%
+  ) !important;
+  border-color: rgba(56,189,248,0.22) !important;
+}
+
+.problem-card:hover,
+.case-card:hover,
+.process-card:hover,
+.bento-card:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.02) 0%,
+    rgba(56,189,248,0.01) 100%
+  ) !important;
+  border-color: rgba(56,189,248,0.10) !important;
+}
+
+/* ── Card 3D tilt + shine ── */
+.card-shine {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              box-shadow 0.4s ease;
+}
+.card-shine::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at var(--shine-x, 50%) var(--shine-y, 50%),
+    rgba(255, 255, 255, 0.008) 0%,
+    transparent 62%
+  );
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+.card-shine:hover::after {
+  opacity: 0;
+}
+.card-shine:hover {
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 30px rgba(56, 189, 248, 0.06);
+}
+
+/* ── Liquid glass buttons ─────────────────────────────────────── */
+.btn.primary,
+.top-cta {
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.22) 0%,
+    rgba(56,189,248,0.18) 100%
+  );
+  border: 1px solid rgba(56,189,248,0.42);
+  color: #fff;
+  font-weight: 700;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow:
+    0 0 6px rgba(56,189,248,0.05),
+    0 4px 8px rgba(56,189,248,0.04),
+    inset  0    0   6px    6px   rgba(56,189,248,0.04),
+    inset  0    0   2px    2px   rgba(56,189,248,0.02);
+  text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+  transition:
+    transform   0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    background  0.25s ease,
+    box-shadow  0.25s ease,
+    border-color 0.25s ease;
+}
+
+.btn.primary:hover,
+.top-cta:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(56,189,248,0.28) 0%,
+    rgba(14,165,233,0.15) 100%
+  );
+  border-color: rgba(56,189,248,0.68);
+  color: #fff;
+  transform: scale(1.05) translateY(-2px);
+  box-shadow:
+    0 0 10px rgba(56,189,248,0.10),
+    0 8px 12px rgba(56,189,248,0.06),
+    inset  0    0   6px    6px   rgba(56,189,248,0.07),
+    inset  0    0   2px    2px   rgba(56,189,248,0.04);
+  text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+}
+
+/* Glass distortion inner layer (injected via JS) */
+.btn-glass-layer {
+  display: none;
+}
+
+/* Keep button content above glass layer */
+.btn.primary > :not(.btn-glass-layer),
+.top-cta > :not(.btn-glass-layer) {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── GSAP reveal initial state — handled via JS, but CSS fallback ── */
+@media (prefers-reduced-motion: no-preference) {
+  .gsap-init {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+}
+
+/* ── Section breathing ── */
+.section {
+  padding: 100px 2rem 76px;
+}
+
+/* ── Back to Top button ── */
+.back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 45px;
+  height: 45px;
+  background: rgba(255,255,255,0.07);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(56,189,248,0.30);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 300;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(12px);
+  transition: opacity 0.35s ease, transform 0.35s ease, background 0.25s ease, border-color 0.25s ease;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.30), 0 0 8px rgba(56,189,248,0.08);
+}
+.back-to-top.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+.back-to-top:hover {
+  background: rgba(56,189,248,0.14);
+  border-color: rgba(56,189,248,0.55);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.30), 0 0 16px rgba(56,189,248,0.18);
+}
+.back-to-top svg {
+  width: 16px;
+  height: 16px;
+}
+.back-to-top svg path {
+  fill: rgba(255,255,255,0.80);
+  transition: fill 0.25s ease;
+}
+.back-to-top:hover svg path {
+  fill: #38bdf8;
+}
+.back-to-top .btt-text {
+  position: absolute;
+  bottom: -22px;
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.50);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+.back-to-top:hover .btt-text {
+  opacity: 1;
+}

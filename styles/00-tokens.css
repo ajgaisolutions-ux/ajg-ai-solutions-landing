@@ -1,0 +1,26 @@
+/* ═══════════════════════════════════════════════════════
+   00-tokens.css — AJG AI Solutions
+   CSS custom properties / design tokens
+   ═══════════════════════════════════════════════════════ */
+
+:root {
+  --bg: #050816;
+  --bg-2: #071025;
+  --panel: #0a1628;
+  --panel-2: #101e38;
+  --panel-3: #0a1628;
+  --line: rgba(255,255,255,.08);
+  --line-2: rgba(255,255,255,.12);
+  --text: #f8fbff;
+  --muted: rgba(255,255,255,.68);
+  --muted-2: rgba(255,255,255,.58);
+  --muted-3: rgba(255,255,255,.46);
+  --cyan: #38bdf8;
+  --blue: #1e50d0;         /* azul profundo del logo */
+  --titanium: #dde9ff;     /* blanco titanio del logo */
+  --cyan-soft: rgba(53,216,255,.16);
+  --blue-soft: rgba(30,80,208,.14);
+  --green: #38bdf8;
+  --green-soft: rgba(56,189,248,.18);
+  --shadow: 0 34px 110px rgba(3,7,18,.78), 0 0 74px rgba(34,211,238,.06);
+}

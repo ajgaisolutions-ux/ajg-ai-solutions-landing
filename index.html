@@ -1,0 +1,778 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="./Logo_AJG_AI_SOLUTIONS_sinfondo_2.png" type="image/png">
+  <meta name="description" content="Automatización de procesos para clínicas, despachos, agencias y negocios de servicios. Detecta qué tareas manuales frenan tu operación y conviértelas en flujos automáticos.">
+  <meta property="og:title" content="Automatización para negocios | Alan Jurado — AJG IA Solutions">
+  <meta property="og:description" content="Detecta qué procesos manuales frenan tu negocio y conviértelos en flujos automatizados que funcionan sin depender de ti.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Automatización para negocios | Alan Jurado">
+  <meta name="twitter:description" content="Detecta qué procesos manuales frenan tu negocio y conviértelos en flujos automatizados.">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Automatización para negocios | Alan Jurado — AJG IA Solutions</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Styles — Load order matters -->
+  <link rel="stylesheet" href="styles/00-tokens.css">
+  <link rel="stylesheet" href="styles/01-base.css">
+  <link rel="stylesheet" href="styles/02-layout.css">
+  <link rel="stylesheet" href="styles/03-utilities.css">
+  <link rel="stylesheet" href="styles/04-glass-system.css">
+  <link rel="stylesheet" href="styles/05-motion-system.css">
+  <link rel="stylesheet" href="styles/06-responsive.css">
+  <link rel="stylesheet" href="styles/07-premium.css">
+
+  <!-- Section styles -->
+  <link rel="stylesheet" href="styles/sections/hero.css">
+  <link rel="stylesheet" href="styles/sections/flow-spotlight.css">
+  <link rel="stylesheet" href="styles/sections/problem.css">
+  <link rel="stylesheet" href="styles/sections/use-cases.css">
+  <link rel="stylesheet" href="styles/sections/process.css">
+  <link rel="stylesheet" href="styles/sections/results.css">
+  <link rel="stylesheet" href="styles/sections/tools.css">
+  <link rel="stylesheet" href="styles/sections/faq.css">
+  <link rel="stylesheet" href="styles/sections/cta.css">
+  <link rel="stylesheet" href="styles/sections/footer.css">
+</head>
+<body>
+  <!-- Full-page shader background — opacity controlled by scroll in bg-shader.js -->
+  <div id="bg-shader-wrap" aria-hidden="true"></div>
+
+  <!-- SVG filter for liquid glass buttons — hidden, referenced via backdrop-filter -->
+  <svg aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden;pointer-events:none">
+    <defs>
+      <filter id="btn-glass-filter" x="0%" y="0%" width="100%" height="100%" color-interpolation-filters="sRGB">
+        <feTurbulence type="fractalNoise" baseFrequency="0.05 0.05" numOctaves="1" seed="1" result="turbulence"/>
+        <feGaussianBlur in="turbulence" stdDeviation="2" result="blurredNoise"/>
+        <feDisplacementMap in="SourceGraphic" in2="blurredNoise" scale="70" xChannelSelector="R" yChannelSelector="B" result="displaced"/>
+        <feGaussianBlur in="displaced" stdDeviation="4" result="finalBlur"/>
+        <feComposite in="finalBlur" in2="finalBlur" operator="over"/>
+      </filter>
+    </defs>
+  </svg>
+
+  <!-- Ambient orbs — CSS animated, no JS -->
+  <div class="orb one"></div>
+  <div class="orb two"></div>
+
+  <div class="page">
+
+    <!-- ══ HEADER ══════════════════════════════════════════════ -->
+    <header>
+      <div class="brand">
+        <div class="brand-mark">
+          <img src="./Logo_AJG_AI_SOLUTIONS_sinfondo_2.png" alt="AJG AI Solutions logo" width="48" height="48">
+        </div>
+        <div class="brand-copy">
+          <div class="name">AJG AI SOLUTIONS</div>
+          <div class="sub">by Alan Jurado</div>
+        </div>
+      </div>
+
+      <nav>
+        <a href="#casos">Casos</a>
+        <a href="#proceso">Proceso</a>
+        <a href="#resultados">Resultados</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+
+      <a class="top-cta" href="https://cal.com/alan-jurado-granados-dbex9o/quiero-un-servicio">Agenda tu diagnóstico</a>
+
+      <button class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </header>
+
+    <!-- Mobile nav drawer -->
+    <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+      <div class="mobile-nav-backdrop" id="mobileNavBackdrop"></div>
+      <div class="mobile-nav-panel" role="dialog" aria-modal="true" aria-label="Menú de navegación">
+        <div class="mobile-nav-close">
+          <button id="mobileNavClose" aria-label="Cerrar menú">&#x2715;</button>
+        </div>
+        <a href="#casos">Casos</a>
+        <a href="#proceso">Proceso</a>
+        <a href="#resultados">Resultados</a>
+        <a href="#faq">FAQ</a>
+        <a class="mobile-nav-cta" href="https://cal.com/alan-jurado-granados-dbex9o/quiero-un-servicio">Agenda tu diagnóstico</a>
+      </div>
+    </div>
+
+    <main>
+
+      <!-- ══ HERO ══════════════════════════════════════════════ -->
+      <section class="hero hero-slim reveal" id="hero">
+
+        <div style="position:relative;z-index:2;max-width:860px;margin:0 auto;width:100%;text-align:center;">
+          <div class="eyebrow" style="margin-bottom:18px;color:rgba(53,216,255,.7)">Para clínicas, despachos, agencias y negocios de servicios</div>
+          <h1>
+            Tu negocio no debería necesitarte<br><span class="highlight">para funcionar.</span>
+          </h1>
+          <div class="hero-copy">
+            Identifico qué procesos te frenan y los convierto en flujos que trabajan solos. Tú defines las reglas, la automatización las ejecuta.
+          </div>
+          <div class="hero-actions" style="justify-content:center;">
+            <a class="btn primary" href="https://cal.com/alan-jurado-granados-dbex9o/quiero-un-servicio">Agenda tu diagnóstico gratis</a>
+            <a class="btn-wa" href="https://wa.me/525579158781"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"/></svg>Escríbeme por WhatsApp</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ PROBLEM ════════════════════════════════════════════ -->
+      <section id="problema" class="section reveal">
+        <div class="problem-shell">
+          <div class="problem-grid">
+            <div>
+              <div class="eyebrow">Problema</div>
+              <h2>Si tu negocio depende demasiado de tareas manuales,<br><span style="color:rgba(255,255,255,.28);font-weight:300">estás perdiendo tiempo, foco y seguimiento.</span></h2>
+            </div>
+            <div class="problem-cards">
+
+              <div class="problem-card">
+                <div class="pc-visual">
+                  <div class="pc-icon">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="rgba(248,113,113,.85)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                  </div>
+                  <span class="pc-badge pc-badge-alert">SIN RESPUESTA &middot; 2h</span>
+                </div>
+                <div class="pc-text">Leads o solicitudes que llegan y no reciben seguimiento a tiempo.</div>
+              </div>
+
+              <div class="problem-card">
+                <div class="pc-visual">
+                  <div class="pc-apps">
+                    <div class="pc-app"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 360 362" width="13" height="13"><path fill="#25D366" fill-rule="evenodd" d="M307.546 52.566C273.709 18.684 228.706.017 180.756 0 81.951 0 1.538 80.404 1.504 179.235c-.017 31.594 8.242 62.432 23.928 89.609L0 361.736l95.024-24.925c26.179 14.285 55.659 21.805 85.655 21.814h.077c98.788 0 179.21-80.413 179.244-179.244.017-47.898-18.608-92.926-52.454-126.807v-.008Zm-126.79 275.788h-.06c-26.73-.008-52.952-7.194-75.831-20.765l-5.44-3.231-56.391 14.791 15.05-54.981-3.542-5.638c-14.912-23.721-22.793-51.139-22.776-79.286.035-82.14 66.867-148.973 149.051-148.973 39.793.017 77.198 15.53 105.328 43.695 28.131 28.157 43.61 65.596 43.593 105.398-.035 82.149-66.867 148.982-148.982 148.982v.008Zm81.719-111.577c-4.478-2.243-26.497-13.073-30.606-14.568-4.108-1.496-7.09-2.243-10.073 2.243-2.982 4.487-11.568 14.577-14.181 17.559-2.613 2.991-5.226 3.361-9.704 1.117-4.477-2.243-18.908-6.97-36.02-22.226-13.313-11.878-22.304-26.54-24.916-31.027-2.613-4.486-.275-6.91 1.959-9.136 2.011-2.011 4.478-5.234 6.721-7.847 2.244-2.613 2.983-4.486 4.478-7.469 1.496-2.991.748-5.603-.369-7.847-1.118-2.243-10.073-24.289-13.812-33.253-3.636-8.732-7.331-7.546-10.073-7.692-2.613-.13-5.595-.155-8.586-.155-2.991 0-7.839 1.118-11.947 5.604-4.108 4.486-15.677 15.324-15.677 37.361s16.047 43.344 18.29 46.335c2.243 2.991 31.585 48.225 76.51 67.632 10.684 4.615 19.029 7.374 25.535 9.437 10.727 3.412 20.49 2.931 28.208 1.779 8.604-1.289 26.498-10.838 30.228-21.298 3.73-10.46 3.73-19.433 2.613-21.298-1.117-1.865-4.108-2.991-8.586-5.234l.008-.017Z" clip-rule="evenodd"/></svg></div>
+                    <div class="pc-app"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="rgba(56,189,248,.75)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m2 7 10 7 10-7"/></svg></div>
+                    <div class="pc-app"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="rgba(167,139,250,.75)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
+                    <span class="pc-app-sep">&middot;&middot;&middot;</span>
+                  </div>
+                </div>
+                <div class="pc-text">Procesos que viven entre WhatsApp, calendario, correo y hojas de c&aacute;lculo.</div>
+              </div>
+
+              <div class="problem-card">
+                <div class="pc-visual">
+                  <div class="pc-icon">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="rgba(56,189,248,.85)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+                  </div>
+                  <span class="pc-badge pc-badge-muted">&times;47 esta semana</span>
+                </div>
+                <div class="pc-text">Atenci&oacute;n al cliente o agenda que depende de repetir tareas una y otra vez.</div>
+              </div>
+
+              <div class="problem-card">
+                <div class="pc-visual">
+                  <div class="pc-icon pc-icon--warn">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="rgba(248,113,113,.85)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+                  </div>
+                  <code class="pc-log">ERR &middot; proceso manual fallido</code>
+                </div>
+                <div class="pc-text">Operaciones internas poco visibles, lentas o sujetas a errores manuales.</div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ FLOW SPOTLIGHT ════════════════════════════════════ -->
+      <section id="flowSection" class="flow-section-v2">
+        <div class="flow-v2-grid">
+
+          <!-- Stacking scroll cards (title first, then steps) -->
+          <div class="flow-v2-right">
+
+            <!-- Title card (card 0) -->
+            <div class="flow-v2-card-wrap flow-v2-card-wrap--title">
+              <div class="flow-v2-card flow-v2-card--title">
+                <div class="flow-v2-card-body" style="padding:2.5rem 2rem;text-align:center;">
+                  <div class="eyebrow" style="justify-content:center;margin-bottom:1.25rem">— EN LA PRÁCTICA</div>
+                  <h2 class="flow-v2-heading" style="text-align:center;margin:0">Cómo procesamos<br>cada solicitud,<br>
+                    <span class="h2-light">de principio a fin.</span>
+                  </h2>
+                </div>
+              </div>
+            </div>
+
+            <div class="flow-v2-card-wrap" data-step="0">
+              <div class="flow-v2-card">
+                <div class="flow-v2-card-header">
+                  <div class="flow-v2-card-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(56,189,248,0.8)" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+                  </div>
+                  <span class="flow-card-step-label" style="margin:0">01 · ENTRADA</span>
+                </div>
+                <div class="flow-v2-card-visual">
+                  <span class="flow-v2-card-bignum">01</span>
+                </div>
+                <div class="flow-v2-card-body">
+                  <div class="flow-card-title">La solicitud llega</div>
+                  <div class="flow-card-desc">El flujo se activa automáticamente cuando entra una solicitud, sin importar el canal de origen.</div>
+                  <div class="flow-card-pills">
+                    <span class="flow-card-pill">Email</span>
+                    <span class="flow-card-pill">Formulario web</span>
+                    <span class="flow-card-pill">WhatsApp</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="flow-v2-card-wrap" data-step="1">
+              <div class="flow-v2-card">
+                <div class="flow-v2-card-header">
+                  <div class="flow-v2-card-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(56,189,248,0.8)" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
+                  </div>
+                  <span class="flow-card-step-label" style="margin:0">02 · CLASIFICACIÓN</span>
+                </div>
+                <div class="flow-v2-card-visual">
+                  <span class="flow-v2-card-bignum">02</span>
+                </div>
+                <div class="flow-v2-card-body">
+                  <div class="flow-card-title">La IA analiza y decide</div>
+                  <div class="flow-card-desc">Identifica el tipo de solicitud, nivel de urgencia y busca la respuesta adecuada en tu base de conocimiento.</div>
+                  <div class="flow-card-pills">
+                    <span class="flow-card-pill">GPT-4o</span>
+                    <span class="flow-card-pill">&lt; 1 segundo</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="flow-v2-card-wrap" data-step="2">
+              <div class="flow-v2-card">
+                <div class="flow-v2-card-header">
+                  <div class="flow-v2-card-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(56,189,248,0.8)" stroke-width="1.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                  </div>
+                  <span class="flow-card-step-label" style="margin:0">03 · EJECUCIÓN</span>
+                </div>
+                <div class="flow-v2-card-visual">
+                  <span class="flow-v2-card-bignum">03</span>
+                </div>
+                <div class="flow-v2-card-body">
+                  <div class="flow-card-title">Las acciones ocurren solas</div>
+                  <div class="flow-card-desc">El sistema actualiza el CRM, asigna al responsable y notifica al cliente. Sin intervención manual.</div>
+                  <div class="flow-card-pills">
+                    <span class="flow-card-pill">HubSpot</span>
+                    <span class="flow-card-pill">Slack</span>
+                    <span class="flow-card-pill">Email</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="flow-v2-card-wrap" data-step="3">
+              <div class="flow-v2-card">
+                <div class="flow-v2-card-header">
+                  <div class="flow-v2-card-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(56,189,248,0.8)" stroke-width="1.5"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                  </div>
+                  <span class="flow-card-step-label" style="margin:0">04 · TRAZABILIDAD</span>
+                </div>
+                <div class="flow-v2-card-visual">
+                  <span class="flow-v2-card-bignum">04</span>
+                </div>
+                <div class="flow-v2-card-body">
+                  <div class="flow-card-title">Todo queda registrado</div>
+                  <div class="flow-card-desc">Cada interacción se documenta con métricas de tiempo, estado y resultado para todo el equipo.</div>
+                  <div class="flow-card-pills">
+                    <span class="flow-card-pill">Google Sheets</span>
+                    <span class="flow-card-pill">Dashboard</span>
+                  </div>
+                  <div class="flow-metrics visible" style="margin-top:1.25rem">
+                    <div class="flow-metric">
+                      <span class="flow-metric-num">+8h</span>
+                      <span class="flow-metric-label">RECUPERADAS A LA SEMANA</span>
+                    </div>
+                    <div class="flow-metric">
+                      <span class="flow-metric-num">3 min</span>
+                      <span class="flow-metric-label">PARA DETECTAR UN ERROR</span>
+                    </div>
+                    <div class="flow-metric">
+                      <span class="flow-metric-num">0</span>
+                      <span class="flow-metric-label">SEGUIMIENTOS MANUALES</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- end flow-v2-right -->
+        </div><!-- end flow-v2-grid -->
+
+        <!-- Floating step indicator pill (right side) -->
+        <div class="flow-v2-pill" id="flowPill">
+          <div class="flow-v2-pill-step active" data-step="0">
+            <span class="flow-v2-pill-num">01</span>
+          </div>
+          <div class="flow-v2-pill-dot"></div>
+          <div class="flow-v2-pill-step" data-step="1">
+            <span class="flow-v2-pill-num">02</span>
+          </div>
+          <div class="flow-v2-pill-dot"></div>
+          <div class="flow-v2-pill-step" data-step="2">
+            <span class="flow-v2-pill-num">03</span>
+          </div>
+          <div class="flow-v2-pill-dot"></div>
+          <div class="flow-v2-pill-step" data-step="3">
+            <span class="flow-v2-pill-num">04</span>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ══ USE CASES ══════════════════════════════════════════ -->
+      <section id="casos" class="section reveal">
+        <div class="cases-shell">
+          <div class="cases-grid">
+            <div>
+              <div class="eyebrow">Casos de uso</div>
+              <h2>Ejemplos de automatizaciones<br><span style="color:rgba(255,255,255,.28);font-weight:300">que pueden tener impacto inmediato.</span></h2>
+              <div class="section-copy prose-md">
+                Priorizo procesos que afecten atención, seguimiento, agenda u operación diaria, especialmente en negocios que necesitan responder más rápido y operar con menos fricción.
+              </div>
+            </div>
+
+            <div class="cases-cards">
+
+              <div class="case-card">
+                <div class="case-header">
+                  <div class="case-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="rgba(56,189,248,.80)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+                  <div class="case-tag">Agencias · Despachos</div>
+                </div>
+                <div class="case-row"><div class="node"></div><div>Notificaciones internas cuando entra una nueva solicitud o lead</div></div>
+                <div class="case-outcome">→ 0 solicitudes sin atender</div>
+              </div>
+
+              <div class="case-card">
+                <div class="case-header">
+                  <div class="case-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="rgba(56,189,248,.80)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+                  <div class="case-tag">Clínicas · Consultorios</div>
+                </div>
+                <div class="case-row"><div class="node"></div><div>Agenda y booking automatizado sin intervención manual</div></div>
+                <div class="case-outcome">→ agenda lista sin fricción manual</div>
+              </div>
+
+              <div class="case-card">
+                <div class="case-header">
+                  <div class="case-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="rgba(56,189,248,.80)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"/></svg></div>
+                  <div class="case-tag">Cualquier servicio</div>
+                </div>
+                <div class="case-row"><div class="node"></div><div>Atención inicial al cliente y enrutamiento de conversaciones</div></div>
+                <div class="case-outcome">→ primera respuesta en segundos</div>
+              </div>
+
+              <div class="case-card">
+                <div class="case-header">
+                  <div class="case-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="rgba(56,189,248,.80)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div>
+                  <div class="case-tag">Ventas · Agencias</div>
+                </div>
+                <div class="case-row"><div class="node"></div><div>Calificación de leads antes de una llamada o propuesta</div></div>
+                <div class="case-outcome">→ solo llegan leads calificados</div>
+              </div>
+
+              <div class="case-card">
+                <div class="case-header">
+                  <div class="case-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="rgba(56,189,248,.80)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+                  <div class="case-tag">Equipos · Operaciones</div>
+                </div>
+                <div class="case-row"><div class="node"></div><div>Procesos internos que hoy dependen de seguimiento manual</div></div>
+                <div class="case-outcome">→ seguimiento sin esfuerzo manual</div>
+              </div>
+
+              <div class="case-card">
+                <div class="case-header">
+                  <div class="case-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="rgba(56,189,248,.80)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div>
+                  <div class="case-tag">Cualquier servicio</div>
+                </div>
+                <div class="case-row"><div class="node"></div><div>Conexión entre formularios, WhatsApp, calendario y herramientas de trabajo</div></div>
+                <div class="case-outcome">→ todo sincronizado automáticamente</div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ MID CTA ══════════════════════════════════════════ -->
+      <section class="section reveal mid-cta-strip">
+        <div class="mid-cta-inner">
+          <div>
+            <div class="mid-cta-text">¿Ya identificaste un proceso que podrías automatizar?</div>
+          </div>
+          <a class="btn primary" href="https://cal.com/alan-jurado-granados-dbex9o/quiero-un-servicio">Quiero ver qué puedo automatizar</a>
+        </div>
+      </section>
+
+      <!-- ══ RESULTS ════════════════════════════════════════════ -->
+      <section id="resultados" class="section reveal">
+        <div class="inner">
+          <div style="margin-bottom:28px">
+            <div class="eyebrow">Resultados</div>
+            <h2>Qué cambia<br><span style="color:rgba(255,255,255,.28);font-weight:300">cuando automatizas bien.</span></h2>
+          </div>
+
+          <div class="transform-grid">
+            <div class="transform-card">
+              <div class="transform-before">
+                <div class="transform-label before-label">Antes</div>
+                <div class="transform-text">Leads que llegan por WhatsApp y nadie responde a tiempo.</div>
+              </div>
+              <div class="transform-divider"><span>resultado</span></div>
+              <div class="transform-after">
+                <div class="transform-label after-label">Después</div>
+                <div class="transform-text">Notificación automática al equipo + respuesta inicial enviada en segundos.</div>
+                <div class="transform-metric"><svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg> &lt; 30 seg de respuesta</div>
+              </div>
+            </div>
+
+            <div class="transform-card">
+              <div class="transform-before">
+                <div class="transform-label before-label">Antes</div>
+                <div class="transform-text">Agenda coordinada a mano, sin confirmaciones ni recordatorios.</div>
+              </div>
+              <div class="transform-divider"><span>resultado</span></div>
+              <div class="transform-after">
+                <div class="transform-label after-label">Después</div>
+                <div class="transform-text">Booking automatizado con confirmación y recordatorio sin intervención manual.</div>
+                <div class="transform-metric"><svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><polyline points="20 6 9 17 4 12"/></svg> 0 citas perdidas</div>
+              </div>
+            </div>
+
+            <div class="transform-card">
+              <div class="transform-before">
+                <div class="transform-label before-label">Antes</div>
+                <div class="transform-text">Información dispersa entre formularios, correos y hojas de cálculo.</div>
+              </div>
+              <div class="transform-divider"><span>resultado</span></div>
+              <div class="transform-after">
+                <div class="transform-label after-label">Después</div>
+                <div class="transform-text">Flujo conectado: cada solicitud registrada, trazada y visible en un solo lugar.</div>
+                <div class="transform-metric"><svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><polygon points="12 2 2 7 12 12 22 7"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg> 100% trazado</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ══ PROCESO ═════════════════════════════════════════════ -->
+      <section id="proceso" class="section reveal">
+        <div class="inner">
+          <div style="margin-bottom:28px">
+            <div class="eyebrow">Mi proceso</div>
+            <h2>Cómo trabajamos<br><span style="color:rgba(255,255,255,.28);font-weight:300">juntos.</span></h2>
+          </div>
+          <div class="process-grid">
+            <div class="process-card">
+              <div style="width:36px;height:36px;border-radius:10px;background:rgba(56,189,248,0.08);border:1px solid rgba(56,189,248,0.16);display:flex;align-items:center;justify-content:center;margin-bottom:14px;flex-shrink:0"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="rgba(56,189,248,.80)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+              <div class="process-num">01</div>
+              <div class="process-title">Diagnóstico</div>
+              <div class="process-text">Revisamos tu operación actual, tus herramientas y dónde se están generando fricciones, retrasos o tareas repetitivas.</div>
+            </div>
+            <div class="process-card">
+              <div style="width:36px;height:36px;border-radius:10px;background:rgba(56,189,248,0.08);border:1px solid rgba(56,189,248,0.16);display:flex;align-items:center;justify-content:center;margin-bottom:14px;flex-shrink:0"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="rgba(56,189,248,.80)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div>
+              <div class="process-num" style="display:flex;align-items:center;gap:6px"><span class="process-arrow" style="opacity:.3;font-size:9px">&#8594;</span>02</div>
+              <div class="process-title">Propuesta</div>
+              <div class="process-text">Defino una solución alineada a tu negocio, con alcance claro, prioridades concretas y lógica operativa.</div>
+            </div>
+            <div class="process-card">
+              <div style="width:36px;height:36px;border-radius:10px;background:rgba(56,189,248,0.08);border:1px solid rgba(56,189,248,0.16);display:flex;align-items:center;justify-content:center;margin-bottom:14px;flex-shrink:0"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="rgba(56,189,248,.80)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M4.93 4.93a10 10 0 0 0 0 14.14"/></svg></div>
+              <div class="process-num" style="display:flex;align-items:center;gap:6px"><span class="process-arrow" style="opacity:.3;font-size:9px">&#8594;</span>03</div>
+              <div class="process-title">Implementación</div>
+              <div class="process-text">Si hace sentido avanzar, se construye la automatización y se conecta a tu flujo real de trabajo.</div>
+            </div>
+          </div>
+          <div style="text-align:center;margin-top:36px">
+            <a class="btn primary" href="https://cal.com/alan-jurado-granados-dbex9o/quiero-un-servicio">Empezar con el diagnóstico</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ TOOLS ══════════════════════════════════════════════ -->
+      <section id="herramientas" class="section reveal" style="position:relative;overflow:hidden;padding:60px 0 80px;">
+
+        <div style="position:absolute;top:-25%;left:-15%;width:700px;height:700px;background:radial-gradient(circle,rgba(30,80,208,0.13),transparent 70%);pointer-events:none;z-index:0;"></div>
+        <div style="position:absolute;bottom:-10%;right:-10%;width:500px;height:500px;background:radial-gradient(circle,rgba(53,216,255,0.07),transparent 70%);pointer-events:none;z-index:0;"></div>
+
+        <div class="inner" style="position:relative;z-index:1;">
+          <div style="text-align:center;margin-bottom:40px;">
+            <div class="eyebrow" style="margin-bottom:12px">Herramientas</div>
+            <h2 style="font-size:clamp(20px,3.5vw,32px);font-weight:700;color:rgba(255,255,255,.95);letter-spacing:-.02em;line-height:1.3;margin:0;">
+              Mi stack de trabajo,<br>
+              <span style="color:rgba(255,255,255,.28);font-weight:300">siempre en evolución.</span>
+            </h2>
+          </div>
+
+          <!-- Bento Grid -->
+          <div class="bento-grid">
+
+            <!-- n8n: card GRANDE (2 cols) -->
+            <div class="bento-card bento-large bento-main">
+              <div class="bento-header">
+                <div class="bento-icon" style="background:rgba(234,75,113,.10);border-color:rgba(234,75,113,.22)"><svg viewBox="0 0 228 120" width="28" height="15" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M204 48C192.817 48 183.42 40.3514 180.756 30H153.248C147.382 30 142.376 34.241 141.412 40.0272L140.425 45.9456C139.489 51.5648 136.646 56.4554 132.626 60C136.646 63.5446 139.489 68.4352 140.425 74.0544L141.412 79.9728C142.376 85.759 147.382 90 153.248 90H156.756C159.42 79.6486 168.817 72 180 72C193.255 72 204 82.7452 204 96C204 109.255 193.255 120 180 120C168.817 120 159.42 112.351 156.756 102H153.248C141.516 102 131.504 93.5181 129.575 81.9456L128.588 76.0272C127.624 70.241 122.618 66 116.752 66H107.244C104.58 76.3514 95.183 84 84 84C72.817 84 63.4204 76.3514 60.7561 66H47.2439C44.5796 76.3514 35.183 84 24 84C10.7452 84 0 73.2548 0 60C0 46.7452 10.7452 36 24 36C35.183 36 44.5796 43.6486 47.2439 54H60.7561C63.4204 43.6486 72.817 36 84 36C95.183 36 104.58 43.6486 107.244 54H116.752C122.618 54 127.624 49.759 128.588 43.9728L129.575 38.0544C131.504 26.4819 141.516 18 153.248 18L180.756 18C183.42 7.64864 192.817 0 204 0C217.255 0 228 10.7452 228 24C228 37.2548 217.255 48 204 48ZM204 36C210.627 36 216 30.6274 216 24C216 17.3726 210.627 12 204 12C197.373 12 192 17.3726 192 24C192 30.6274 197.373 36 204 36ZM24 72C30.6274 72 36 66.6274 36 60C36 53.3726 30.6274 48 24 48C17.3726 48 12 53.3726 12 60C12 66.6274 17.3726 72 24 72ZM96 60C96 66.6274 90.6274 72 84 72C77.3726 72 72 66.6274 72 60C72 53.3726 77.3726 48 84 48C90.6274 48 96 53.3726 96 60ZM192 96C192 102.627 186.627 108 180 108C173.373 108 168 102.627 168 96C168 89.3726 173.373 84 180 84C186.627 84 192 89.3726 192 96Z" fill="#ea4b71"/></svg></div>
+                <div class="bento-meta">
+                  <span class="bento-cat">AUTOMATIZACIÓN · NO-CODE</span>
+                  <h3 class="bento-name">n8n</h3>
+                </div>
+              </div>
+              <p class="bento-desc">Conecta apps y automatiza flujos sin código. Webhooks, APIs y más.</p>
+              <span class="bento-badge bento-badge-active">⚡ HERRAMIENTA PRINCIPAL</span>
+            </div>
+
+            <!-- Claude Code -->
+            <div class="bento-card bento-large bento-main">
+              <div class="bento-header">
+                <div class="bento-icon" style="background:rgba(56,189,248,.10);border-color:rgba(56,189,248,.22)"><svg fill="rgba(255,255,255,.85)" fill-rule="evenodd" viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg"><path d="M13.827 3.52h3.603L24 20h-3.603l-6.57-16.48zm-7.258 0h3.767L16.906 20h-3.674l-1.343-3.461H5.017l-1.344 3.46H0L6.57 3.522zm4.132 9.959L8.453 7.687 6.205 13.48H10.7z"/></svg></div>
+                <div class="bento-meta">
+                  <span class="bento-cat">ANTHROPIC · CODING AI</span>
+                  <h3 class="bento-name">Claude Code</h3>
+                </div>
+              </div>
+              <span class="bento-badge bento-badge-live">● ACTIVO AHORA</span>
+            </div>
+
+            <!-- ChatGPT -->
+            <div class="bento-card">
+              <div class="bento-header">
+                <div class="bento-icon" style="background:rgba(16,163,127,.10);border-color:rgba(16,163,127,.22)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 260" width="20" height="20"><path fill="rgba(255,255,255,.85)" d="M239.184 106.203a64.716 64.716 0 0 0-5.576-53.103C219.452 28.459 191 15.784 163.213 21.74A65.586 65.586 0 0 0 52.096 45.22a64.716 64.716 0 0 0-43.23 31.36c-14.31 24.602-11.061 55.634 8.033 76.74a64.665 64.665 0 0 0 5.525 53.102c14.174 24.65 42.644 37.324 70.446 31.36a64.72 64.72 0 0 0 48.754 21.744c28.481.025 53.714-18.361 62.414-45.481a64.767 64.767 0 0 0 43.229-31.36c14.137-24.558 10.875-55.423-8.083-76.483Zm-97.56 136.338a48.397 48.397 0 0 1-31.105-11.255l1.535-.87 51.67-29.825a8.595 8.595 0 0 0 4.247-7.367v-72.85l21.845 12.636c.218.111.37.32.409.563v60.367c-.056 26.818-21.783 48.545-48.601 48.601Zm-104.466-44.61a48.345 48.345 0 0 1-5.781-32.589l1.534.921 51.722 29.826a8.339 8.339 0 0 0 8.441 0l63.181-36.425v25.221a.87.87 0 0 1-.358.665l-52.335 30.184c-23.257 13.398-52.97 5.431-66.404-17.803ZM23.549 85.38a48.499 48.499 0 0 1 25.58-21.333v61.39a8.288 8.288 0 0 0 4.195 7.316l62.874 36.272-21.845 12.636a.819.819 0 0 1-.767 0L41.353 151.53c-23.211-13.454-31.171-43.144-17.804-66.405v.256Zm179.466 41.695-63.08-36.63L161.73 77.86a.819.819 0 0 1 .768 0l52.233 30.184a48.6 48.6 0 0 1-7.316 87.635v-61.391a8.544 8.544 0 0 0-4.4-7.213Zm21.742-32.69-1.535-.922-51.619-30.081a8.39 8.39 0 0 0-8.492 0L99.98 99.808V74.587a.716.716 0 0 1 .307-.665l52.233-30.133a48.652 48.652 0 0 1 72.236 50.391v.205ZM88.061 139.097l-21.845-12.585a.87.87 0 0 1-.41-.614V65.685a48.652 48.652 0 0 1 79.757-37.346l-1.535.87-51.67 29.825a8.595 8.595 0 0 0-4.246 7.367l-.051 72.697Zm11.868-25.58 28.138-16.217 28.188 16.218v32.434l-28.086 16.218-28.188-16.218-.052-32.434Z"/></svg></div>
+                <div class="bento-meta">
+                  <span class="bento-cat">OPENAI · IA</span>
+                  <h3 class="bento-name">ChatGPT</h3>
+                </div>
+              </div>
+              <span class="bento-badge bento-badge-neutral">GPT-4o</span>
+            </div>
+
+            <!-- Gemini -->
+            <div class="bento-card">
+              <div class="bento-header">
+                <div class="bento-icon" style="background:rgba(66,133,244,.10);border-color:rgba(66,133,244,.22)"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="rgba(66,133,244,.90)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg></div>
+                <div class="bento-meta">
+                  <span class="bento-cat">GOOGLE AI</span>
+                  <h3 class="bento-name">Gemini</h3>
+                </div>
+              </div>
+              <span class="bento-badge bento-badge-neutral">Pro 1.5</span>
+            </div>
+
+            <!-- WhatsApp Business -->
+            <div class="bento-card">
+              <div class="bento-header">
+                <div class="bento-icon" style="background:rgba(37,211,102,.10);border-color:rgba(37,211,102,.22)"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 360 362" width="20" height="20"><path fill="#25D366" fill-rule="evenodd" d="M307.546 52.566C273.709 18.684 228.706.017 180.756 0 81.951 0 1.538 80.404 1.504 179.235c-.017 31.594 8.242 62.432 23.928 89.609L0 361.736l95.024-24.925c26.179 14.285 55.659 21.805 85.655 21.814h.077c98.788 0 179.21-80.413 179.244-179.244.017-47.898-18.608-92.926-52.454-126.807v-.008Zm-126.79 275.788h-.06c-26.73-.008-52.952-7.194-75.831-20.765l-5.44-3.231-56.391 14.791 15.05-54.981-3.542-5.638c-14.912-23.721-22.793-51.139-22.776-79.286.035-82.14 66.867-148.973 149.051-148.973 39.793.017 77.198 15.53 105.328 43.695 28.131 28.157 43.61 65.596 43.593 105.398-.035 82.149-66.867 148.982-148.982 148.982v.008Zm81.719-111.577c-4.478-2.243-26.497-13.073-30.606-14.568-4.108-1.496-7.09-2.243-10.073 2.243-2.982 4.487-11.568 14.577-14.181 17.559-2.613 2.991-5.226 3.361-9.704 1.117-4.477-2.243-18.908-6.97-36.02-22.226-13.313-11.878-22.304-26.54-24.916-31.027-2.613-4.486-.275-6.91 1.959-9.136 2.011-2.011 4.478-5.234 6.721-7.847 2.244-2.613 2.983-4.486 4.478-7.469 1.496-2.991.748-5.603-.369-7.847-1.118-2.243-10.073-24.289-13.812-33.253-3.636-8.732-7.331-7.546-10.073-7.692-2.613-.13-5.595-.155-8.586-.155-2.991 0-7.839 1.118-11.947 5.604-4.108 4.486-15.677 15.324-15.677 37.361s16.047 43.344 18.29 46.335c2.243 2.991 31.585 48.225 76.51 67.632 10.684 4.615 19.029 7.374 25.535 9.437 10.727 3.412 20.49 2.931 28.208 1.779 8.604-1.289 26.498-10.838 30.228-21.298 3.73-10.46 3.73-19.433 2.613-21.298-1.117-1.865-4.108-2.991-8.586-5.234l.008-.017Z" clip-rule="evenodd"/></svg></div>
+                <div class="bento-meta">
+                  <span class="bento-cat">MENSAJERÍA</span>
+                  <h3 class="bento-name">WhatsApp Business</h3>
+                </div>
+              </div>
+              <span class="bento-badge bento-badge-neutral">API INTEGRADA</span>
+            </div>
+
+            <!-- Notion -->
+            <div class="bento-card">
+              <div class="bento-header">
+                <div class="bento-icon" style="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.15)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 268" width="20" height="20"><path fill="rgba(255,255,255,.85)" d="M164.09.608 16.092 11.538C4.155 12.573 0 20.374 0 29.726v162.245c0 7.284 2.585 13.516 8.826 21.843l34.789 45.237c5.715 7.284 10.912 8.844 21.825 8.327l171.864-10.404c14.532-1.035 18.696-7.801 18.696-19.24V55.207c0-5.911-2.336-7.614-9.21-12.66l-1.185-.856L198.37 8.409C186.94.1 182.27-.952 164.09.608ZM69.327 52.22c-14.033.945-17.216 1.159-25.186-5.323L23.876 30.778c-2.06-2.086-1.026-4.69 4.163-5.207l142.274-10.395c11.947-1.043 18.17 3.12 22.842 6.758l24.401 17.68c1.043.525 3.638 3.637.517 3.637L71.146 52.095l-1.819.125Zm-16.36 183.954V81.222c0-6.767 2.077-9.887 8.3-10.413L230.02 60.93c5.724-.517 8.31 3.12 8.31 9.879v153.917c0 6.767-1.044 12.49-10.387 13.008l-161.487 9.361c-9.343.517-13.489-2.594-13.489-10.921ZM212.377 89.53c1.034 4.681 0 9.362-4.681 9.897l-7.783 1.542v114.404c-6.758 3.637-12.981 5.715-18.18 5.715-8.308 0-10.386-2.604-16.609-10.396l-50.898-80.079v77.476l16.1 3.646s0 9.362-12.989 9.362l-35.814 2.077c-1.043-2.086 0-7.284 3.63-8.318l9.351-2.595V109.823l-12.98-1.052c-1.044-4.68 1.55-11.439 8.826-11.965l38.426-2.585 52.958 81.113v-71.76l-13.498-1.552c-1.043-5.733 3.111-9.896 8.3-10.404l35.84-2.087Z"/></svg></div>
+                <div class="bento-meta">
+                  <span class="bento-cat">WORKSPACE · DOCS</span>
+                  <h3 class="bento-name">Notion</h3>
+                </div>
+              </div>
+              <span class="bento-badge bento-badge-neutral">REGISTROS</span>
+            </div>
+
+            <!-- Slack -->
+            <div class="bento-card">
+              <div class="bento-header">
+                <div class="bento-icon" style="background:rgba(224,30,90,.10);border-color:rgba(224,30,90,.22)"><svg enable-background="new 0 0 2447.6 2452.5" viewBox="0 0 2447.6 2452.5" xmlns="http://www.w3.org/2000/svg" width="20" height="20"><g clip-rule="evenodd" fill-rule="evenodd"><path d="m897.4 0c-135.3.1-244.8 109.9-244.7 245.2-.1 135.3 109.5 245.1 244.8 245.2h244.8v-245.1c.1-135.3-109.5-245.1-244.9-245.3.1 0 .1 0 0 0m0 654h-652.6c-135.3.1-244.9 109.9-244.8 245.2-.2 135.3 109.4 245.1 244.7 245.3h652.7c135.3-.1 244.9-109.9 244.8-245.2.1-135.4-109.5-245.2-244.8-245.3z" fill="#36c5f0"/><path d="m2447.6 899.2c.1-135.3-109.5-245.1-244.8-245.2-135.3.1-244.9 109.9-244.8 245.2v245.3h244.8c135.3-.1 244.9-109.9 244.8-245.3zm-652.7 0v-654c.1-135.2-109.4-245-244.7-245.2-135.3.1-244.9 109.9-244.8 245.2v654c-.2 135.3 109.4 245.1 244.7 245.3 135.3-.1 244.9-109.9 244.8-245.3z" fill="#2eb67d"/><path d="m1550.1 2452.5c135.3-.1 244.9-109.9 244.8-245.2.1-135.3-109.5-245.1-244.8-245.2h-244.8v245.2c-.1 135.2 109.5 245 244.8 245.2zm0-654.1h652.7c135.3-.1 244.9-109.9 244.8-245.2.2-135.3-109.4-245.1-244.7-245.3h-652.7c-135.3.1-244.9 109.9-244.8 245.2-.1 135.4 109.4 245.2 244.7 245.3z" fill="#ecb22e"/><path d="m0 1553.2c-.1 135.3 109.5 245.1 244.8 245.2 135.3-.1 244.9-109.9 244.8-245.2v-245.2h-244.8c-135.3.1-244.9 109.9-244.8 245.2zm652.7 0v654c-.2 135.3 109.4 245.1 244.7 245.3 135.3-.1 244.9-109.9 244.8-245.2v-653.9c.2-135.3-109.4-245.1-244.7-245.3-135.4 0-244.9 109.8-244.8 245.1 0 0 0 .1 0 0" fill="#e01e5a"/></g></svg></div>
+                <div class="bento-meta">
+                  <span class="bento-cat">MENSAJERÍA · EQUIPOS</span>
+                  <h3 class="bento-name">Slack</h3>
+                </div>
+              </div>
+              <span class="bento-badge bento-badge-neutral">NOTIFICACIONES</span>
+            </div>
+
+            <!-- Stripe -->
+            <div class="bento-card">
+              <div class="bento-header">
+                <div class="bento-icon" style="background:rgba(83,58,253,.10);border-color:rgba(83,58,253,.22)"><svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" fill="none" viewBox="100 100 312 312" style="width:20px;height:20px"><path fill="#533afd" fill-rule="evenodd" d="m120 392 272-57.683V120l-272 58.357z" clip-rule="evenodd"/></svg></div>
+                <div class="bento-meta">
+                  <span class="bento-cat">PAGOS · FINTECH</span>
+                  <h3 class="bento-name">Stripe</h3>
+                </div>
+              </div>
+              <span class="bento-badge bento-badge-neutral">AUTOMATIZADO</span>
+            </div>
+
+            <!-- Gmail -->
+            <div class="bento-card">
+              <div class="bento-header">
+                <div class="bento-icon" style="background:rgba(234,67,53,.10);border-color:rgba(234,67,53,.22)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 49.4 512 399.42" width="20" height="16"><g fill="none" fill-rule="evenodd"><g fill-rule="nonzero"><path fill="#4285f4" d="M34.91 448.818h81.454V251L0 163.727V413.91c0 19.287 15.622 34.91 34.91 34.91z"/><path fill="#34a853" d="M395.636 448.818h81.455c19.287 0 34.909-15.622 34.909-34.909V163.727L395.636 251z"/><path fill="#fbbc04" d="M395.636 99.727V251L512 163.727v-46.545c0-43.142-49.25-67.782-83.782-41.891z"/></g><path fill="#ea4335" d="M116.364 251V99.727L256 204.455 395.636 99.727V251L256 355.727z"/><path fill="#c5221f" fill-rule="nonzero" d="M0 117.182v46.545L116.364 251V99.727L83.782 75.291C49.25 49.4 0 74.04 0 117.18z"/></g></svg></div>
+                <div class="bento-meta">
+                  <span class="bento-cat">CORREO · GOOGLE</span>
+                  <h3 class="bento-name">Gmail</h3>
+                </div>
+              </div>
+              <span class="bento-badge bento-badge-neutral">AUTOMATIZADO</span>
+            </div>
+
+            <!-- Cal.com -->
+            <div class="bento-card">
+              <div class="bento-header">
+                <div class="bento-icon" style="background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.14)"><svg width="101" height="22" viewBox="0 0 101 22" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:32px;height:7px"><path d="M10.0582 20.817C4.32115 20.817 0 16.2763 0 10.6704C0 5.04589 4.1005 0.467773 10.0582 0.467773C13.2209 0.467773 15.409 1.43945 17.1191 3.66311L14.3609 5.96151C13.2025 4.72822 11.805 4.11158 10.0582 4.11158C6.17833 4.11158 4.04533 7.08268 4.04533 10.6704C4.04533 14.2582 6.38059 17.1732 10.0582 17.1732C11.7866 17.1732 13.2577 16.5566 14.4161 15.3233L17.1375 17.7151C15.501 19.8453 13.2577 20.817 10.0582 20.817Z" fill="rgba(255,255,255,.8)"/><path d="M29.0161 5.88601H32.7304V20.4612H29.0161V18.331C28.2438 19.8446 26.9566 20.8536 24.4927 20.8536C20.5577 20.8536 17.4133 17.4341 17.4133 13.2297C17.4133 9.02528 20.5577 5.60571 24.4927 5.60571C26.9383 5.60571 28.2438 6.61477 29.0161 8.12835V5.88601ZM29.1264 13.2297C29.1264 10.95 27.5634 9.06266 25.0995 9.06266C22.7274 9.06266 21.1828 10.9686 21.1828 13.2297C21.1828 15.4346 22.7274 17.3967 25.0995 17.3967C27.5451 17.3967 29.1264 15.4907 29.1264 13.2297Z" fill="rgba(255,255,255,.8)"/><path d="M35.3599 0H39.0742V20.4427H35.3599V0Z" fill="rgba(255,255,255,.8)"/><path d="M40.7291 18.5182C40.7291 17.3223 41.6853 16.3132 42.9908 16.3132C44.2964 16.3132 45.2158 17.3223 45.2158 18.5182C45.2158 19.7515 44.278 20.7605 42.9908 20.7605C41.7037 20.7605 40.7291 19.7515 40.7291 18.5182Z" fill="rgba(255,255,255,.8)"/><path d="M59.4296 18.1068C58.0505 19.7885 55.9543 20.8536 53.4719 20.8536C49.0404 20.8536 45.7858 17.4341 45.7858 13.2297C45.7858 9.02528 49.0404 5.60571 53.4719 5.60571C55.8623 5.60571 57.9402 6.61477 59.3193 8.20309L56.4508 10.6136C55.7336 9.71667 54.7958 9.04397 53.4719 9.04397C51.0999 9.04397 49.5553 10.95 49.5553 13.211C49.5553 15.472 51.0999 17.378 53.4719 17.378C54.9062 17.378 55.8991 16.6306 56.6346 15.6215L59.4296 18.1068Z" fill="rgba(255,255,255,.8)"/><path d="M59.7422 13.2297C59.7422 9.02528 62.9968 5.60571 67.4283 5.60571C71.8598 5.60571 75.1144 9.02528 75.1144 13.2297C75.1144 17.4341 71.8598 20.8536 67.4283 20.8536C62.9968 20.8349 59.7422 17.4341 59.7422 13.2297ZM71.3449 13.2297C71.3449 10.95 69.8003 9.06266 67.4283 9.06266C65.0563 9.04397 63.5117 10.95 63.5117 13.2297C63.5117 15.4907 65.0563 17.3967 67.4283 17.3967C69.8003 17.3967 71.3449 15.4907 71.3449 13.2297Z" fill="rgba(255,255,255,.8)"/><path d="M100.232 11.5482V20.4428H96.518V12.4638C96.518 9.94119 95.3412 8.85739 93.576 8.85739C91.921 8.85739 90.7442 9.67958 90.7442 12.4638V20.4428H87.0299V12.4638C87.0299 9.94119 85.8346 8.85739 84.0878 8.85739C82.4329 8.85739 80.9802 9.67958 80.9802 12.4638V20.4428H77.2659V5.8676H80.9802V7.88571C81.7525 6.31607 83.15 5.53125 85.3014 5.53125C87.3425 5.53125 89.0525 6.5403 89.9903 8.24074C90.9281 6.50293 92.3072 5.53125 94.8079 5.53125C97.8603 5.54994 100.232 7.86702 100.232 11.5482Z" fill="rgba(255,255,255,.8)"/></svg></div>
+                <div class="bento-meta">
+                  <span class="bento-cat">AGENDA · BOOKING</span>
+                  <h3 class="bento-name">Cal.com</h3>
+                </div>
+              </div>
+              <span class="bento-badge bento-badge-neutral">INTEGRADO</span>
+            </div>
+
+            <!-- Y otras herramientas (fila completa) -->
+            <div class="bento-card bento-more" style="grid-column: span 4">
+              <div class="bento-more-content">
+                <span class="bento-more-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="rgba(255,255,255,.45)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span>
+                <div>
+                  <h3 class="bento-name">Y otras herramientas</h3>
+                  <p class="bento-desc">Siempre explorando. El stack crece según cada proyecto.</p>
+                </div>
+              </div>
+              <span class="bento-badge bento-badge-neutral">EN EVOLUCIÓN</span>
+            </div>
+
+          </div>
+          <div style="text-align:center;margin-top:36px;color:rgba(255,255,255,.48);font-size:14px;line-height:1.6">
+            Cada proyecto define su stack. <a href="https://cal.com/alan-jurado-granados-dbex9o/quiero-un-servicio" style="color:rgba(53,216,255,.75);text-decoration:none;border-bottom:1px solid rgba(53,216,255,.28);padding-bottom:1px">Agendemos una llamada</a> para ver qué herramientas tienen sentido para tu caso.
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ══ FAQ ════════════════════════════════════════════════ -->
+      <section id="faq" class="section reveal">
+        <div class="inner">
+          <div style="margin-bottom:24px">
+            <div class="eyebrow">FAQ</div>
+            <h2>Preguntas frecuentes<br><span style="color:rgba(255,255,255,.28);font-weight:300">antes de avanzar.</span></h2>
+          </div>
+
+          <div class="faq-grid">
+            <div class="faq-item open">
+              <div class="faq-q">¿La llamada tiene costo?</div>
+              <div class="faq-a">No, es gratuita. La llamada de diagnóstico está pensada para evaluar tu caso, entender tu operación y detectar si existe una automatización que valga la pena implementar. Sin compromiso.</div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-q">¿Trabajas con cualquier tipo de negocio?</div>
+              <div class="faq-a">Me enfoco principalmente en pequeños negocios y pymes de servicios, clínicas, despachos, agencias y equipos que ya operan procesos manuales y quieren ordenarlos.</div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-q">¿Necesito saber de herramientas o automatización?</div>
+              <div class="faq-a">No. El objetivo es traducir problemas operativos reales a soluciones claras, sin complicarte con una capa técnica innecesaria.</div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-q">¿Cuánto cuesta la implementación?</div>
+              <div class="faq-a">Depende del alcance y complejidad del proyecto. Los rangos van desde $8,000 MXN para automatizaciones puntuales hasta $35,000 MXN para sistemas más completos. El costo exacto se define después del diagnóstico, cuando ya entiendo bien tu caso.</div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-q">¿Cuánto tiempo tarda la implementación?</div>
+              <div class="faq-a">Depende del alcance. Una automatización puntual puede estar lista en 1 a 2 semanas. Proyectos más completos toman entre 3 y 6 semanas. Siempre lo definimos en la propuesta para que tengas claridad antes de arrancar.</div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-q">¿Qué pasa si algo deja de funcionar después de entregar?</div>
+              <div class="faq-a">Incluyo un período de ajuste post-entrega para corregir cualquier comportamiento inesperado. Si el problema viene de un cambio en una herramienta externa (API, actualización de plataforma), lo revisamos juntos y proponemos la solución.</div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-q">¿Necesito contratar herramientas adicionales?</div>
+              <div class="faq-a">Depende del proyecto. Muchas automatizaciones se pueden construir con herramientas que ya tienes o con planes gratuitos. Si hay costo adicional de plataformas, te lo informo antes de empezar para que lo evalúes sin sorpresas.</div>
+            </div>
+          </div>
+          <div style="text-align:center;margin-top:36px">
+            <a class="btn primary" href="https://cal.com/alan-jurado-granados-dbex9o/quiero-un-servicio">Agendar diagnóstico</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ FINAL CTA ═══════════════════════════════════════════ -->
+      <section id="cta" class="section reveal">
+        <div class="cta-shell">
+          <div class="cta-orb-a"></div>
+          <div class="cta-orb-b"></div>
+
+          <div class="cta-grid">
+            <div>
+              <div class="eyebrow" style="color:rgba(209,250,254,.84)">Siguiente paso</div>
+              <h2>Agenda un diagnóstico de automatización<br><span style="color:rgba(255,255,255,.28);font-weight:300">para tu negocio.</span></h2>
+              <div class="section-copy prose-lg">
+                Si hoy tienes procesos manuales que te quitan tiempo, generan errores o frenan el seguimiento, agendemos una llamada para revisar qué sí vale la pena automatizar.
+              </div>
+            </div>
+
+            <div class="cta-panel">
+              <a class="btn primary" href="https://cal.com/alan-jurado-granados-dbex9o/quiero-un-servicio">Agendar diagnóstico</a>
+              <div style="font-size:11px;color:rgba(255,255,255,.28);text-align:center;margin-top:5px;letter-spacing:.03em;font-style:italic">Nada se cotiza sin entender primero tu caso.</div>
+              <div style="text-align:center;margin-top:6px"><a class="btn-wa" href="https://wa.me/525579158781"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"/></svg>Escribirme por WhatsApp</a></div>
+              <div class="cta-note"><span style="color:rgba(255,255,255,.86)">Ideal para:</span> clínicas, despachos, agencias, consultorios, negocios de servicios y equipos que ya reciben consultas pero siguen operando manualmente.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ══ FOOTER ══════════════════════════════════════════════ -->
+    <footer>
+      <div class="footer-grid">
+        <div class="footer-copy">
+          <div class="footer-title">Alan Jurado / AJG AI SOLUTIONS</div>
+          <div>Automatización aplicada para negocios que necesitan operar con más claridad y velocidad.</div>
+        </div>
+
+        <div class="footer-nav">
+          <a href="https://cal.com/alan-jurado-granados-dbex9o/quiero-un-servicio">Agendar</a>
+          <a href="https://wa.me/525579158781">WhatsApp</a>
+          <a href="#faq">FAQ</a>
+        </div>
+      </div>
+      <div class="footer-bottom">© 2026 AJG AI SOLUTIONS</div>
+    </footer>
+
+  </div>
+
+  <!-- Premium libs — must load before main.js module -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- Scripts — ES modules -->
+  <script type="module" src="js/main.js"></script>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" id="backToTop" aria-label="Volver arriba">
+    <svg viewBox="0 0 512 512"><path d="M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L256 173.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z"/></svg>
+    <span class="btt-text">Inicio</span>
+  </button>
+  <script>
+    (function(){
+      var btn = document.getElementById('backToTop');
+      window.addEventListener('scroll', function(){
+        btn.classList.toggle('visible', window.scrollY > 400);
+      }, { passive: true });
+      btn.addEventListener('click', function(){
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    })();
+  </script>
+</body>
+</html>

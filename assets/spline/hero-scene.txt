@@ -1,0 +1,28 @@
+# Hero Scene — Spline
+# AJG AI Solutions
+
+## URL en uso (embed viewer)
+La URL activa en el proyecto (extraída de Landing_AJG_prototype.html):
+  https://prod.spline.design/998a0dfc-e9c2-403b-9767-d5371d0d0633/scene.splinecode
+
+Esta URL está configurada en js/config.js → CONFIG.SPLINE_SCENE_URL
+
+## Referencia community
+Community link (referencia visual, no funciona como embed directo):
+  https://app.spline.design/community/file/de399826-b9f3-4b1d-890f-7c261b47ebea
+
+## Cómo cambiar la escena
+1. Editar js/config.js
+2. Cambiar SPLINE_SCENE_URL al nuevo .splinecode URL
+3. Recargar el servidor
+
+## Cómo obtener una URL de exportación desde Spline
+1. Abrir la escena en Spline editor
+2. Ir a Export → Web → Copy URL
+3. Formato esperado: https://prod.spline.design/[scene-id]/scene.splinecode
+
+## Nota sobre el hero
+El Spline está contenido dentro de .hero-stage__viewer (no como fondo global).
+Si Spline no carga en 8 segundos, se oculta automáticamente via js/hero-spline.js.
+El fallback visual es un gradiente definido en:
+  .hero-stage__viewer[data-loading="true"] en styles/sections/hero.css
