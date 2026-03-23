@@ -452,3 +452,39 @@
 @media (max-width: 768px) {
   .back-to-top { display: none !important; }
 }
+
+/* ── DIMENSIONES MOBILE ── */
+
+/* section_padding_movil: padding estándar 80px/24px en secciones */
+@media (max-width: 768px) {
+  .section { padding: 80px 24px 60px !important; }
+  section > .inner { padding-left: 24px !important; padding-right: 24px !important; }
+}
+
+/* cards_padding_movil: mínimo 20px de padding en todas las cards */
+@media (max-width: 768px) {
+  .card, .process-card, .case-card, .benefit-card, .result-card, .problem-card,
+  .faq-item, .transform-card, .bento-card { padding: 20px !important; }
+}
+
+/* flow_card_padding_movil: padding 20px en cards del flow section */
+@media (max-width: 768px) {
+  .flow-v2-card-header { padding: 20px 20px 0 !important; }
+  .flow-v2-card-visual { padding: 20px 20px 16px !important; }
+  .flow-v2-card-body   { padding: 0 20px 20px !important; }
+}
+
+/* mid_cta_movil: padding generoso y border-radius en mid-CTA */
+@media (max-width: 768px) {
+  .mid-cta-inner { padding: 40px 24px !important; border-radius: 24px !important; }
+}
+
+/* section_labels_movil: eyebrow labels legibles en mobile */
+@media (max-width: 768px) {
+  .eyebrow, .micro-label { font-size: 12px !important; letter-spacing: 0.12em !important; }
+}
+
+/* botones_cta_movil: altura mínima 56px en botones CTA */
+@media (max-width: 768px) {
+  .btn { min-height: 56px !important; }
+}
