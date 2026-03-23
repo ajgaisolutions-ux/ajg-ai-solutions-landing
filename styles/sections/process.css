@@ -44,15 +44,25 @@
 }
 
 .process-num {
-  color: rgba(103,232,249,.82);
-  font-size: 11px;
-  letter-spacing: .30em;
-  text-transform: uppercase;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: clamp(4.5rem, 10vw, 7rem);
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  line-height: 1;
+  background: linear-gradient(135deg, rgba(56,189,248,0.72) 0%, rgba(30,80,208,0.38) 55%, rgba(255,255,255,0.08) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 40px rgba(56,189,248,0.20));
+  user-select: none;
+  display: block;
+  margin-bottom: 4px;
 }
 
+/* ocultar la flecha → que vivía dentro del número */
+.process-num .process-arrow { display: none !important; }
+
 .process-title {
-  margin-top: 16px;
+  margin-top: 8px;
   font-size: 28px;
   font-weight: 500;
   color: #fff;
