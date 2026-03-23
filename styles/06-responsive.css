@@ -423,3 +423,32 @@
 @media (max-width: 780px) {
   .process-arrow { display: none; }
 }
+
+/* ── CORRECCIONES MOBILE ── */
+
+/* doble_menu: ocultar nav desktop en mobile con !important */
+@media (max-width: 900px) {
+  nav, .top-cta { display: none !important; }
+}
+
+/* problema_grid_movil: colapsar a 1 columna full-width */
+@media (max-width: 768px) {
+  .problem-grid { grid-template-columns: 1fr !important; }
+  .problem-cards { grid-template-columns: 1fr !important; gap: 12px !important; }
+}
+
+/* cards_texto_pequeno: mínimo legible en cards */
+@media (max-width: 768px) {
+  .pc-text { font-size: 14px !important; line-height: 1.6 !important; }
+  .problem-card { font-size: 14px !important; }
+}
+
+/* hero_tag_ilegible: ocultar etiqueta superior en mobile */
+@media (max-width: 480px) {
+  .eyeline { display: none !important; }
+}
+
+/* scroll_button_flotante: ocultar back-to-top en mobile */
+@media (max-width: 768px) {
+  .back-to-top { display: none !important; }
+}
