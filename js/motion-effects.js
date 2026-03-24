@@ -366,4 +366,27 @@ export function initMotionEffects() {
       obs.observe(wrap);
     });
   })();
+
+  // ── Flow cards stagger entrance (mobile only) ──
+  if (window.innerWidth <= 768) {
+    const flowWraps = Array.from(document.querySelectorAll('#flowSection .flow-v2-card-wrap'));
+    flowWraps.forEach(item => {
+      item.style.opacity = '0';
+      item.style.transform = 'translateY(40px)';
+      item.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+    });
+    const flowObs = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const idx = flowWraps.indexOf(entry.target);
+        setTimeout(() => {
+          entry.target.style.opacity = '';
+          entry.target.style.transform = '';
+          setTimeout(() => { entry.target.style.transition = ''; }, 650);
+        }, idx * 100);
+        flowObs.unobserve(entry.target);
+      });
+    }, { threshold: 0.10 });
+    flowWraps.forEach(el => flowObs.observe(el));
+  }
 }

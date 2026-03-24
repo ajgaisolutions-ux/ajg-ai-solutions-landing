@@ -602,3 +602,8 @@
   /* gap_cards_flow_movil */
   .flow-v2-card-wrap { padding-bottom: 1rem !important; }
 }
+
+/* seccion_flow_top_movil */
+@media (max-width: 768px) {
+  #flowSection { padding-top: 60px !important; }
+}
