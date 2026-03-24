@@ -588,3 +588,17 @@
   .cta-grid h2 { font-size: clamp(22px, 6vw, 30px) !important; line-height: 1.2 !important; }
   .cta-panel { border-radius: 20px !important; }
 }
+
+/* ── FLOW SECTION MOBILE ── */
+@media (max-width: 768px) {
+  /* numero_flow_movil */
+  .flow-v2-card-bignum { font-size: clamp(2.8rem, 10vw, 4rem) !important; }
+  /* titulo_card_flow_movil */
+  .flow-card-title { font-size: clamp(16px, 4.5vw, 20px) !important; }
+  /* header_flow_movil */
+  .flow-v2-card-header { padding-top: 24px !important; }
+  /* titulo_seccion_flow */
+  .flow-v2-heading { font-size: clamp(1.6rem, 5.5vw, 2rem) !important; margin-bottom: 8px !important; }
+  /* gap_cards_flow_movil */
+  .flow-v2-card-wrap { padding-bottom: 1rem !important; }
+}
