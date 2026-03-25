@@ -172,6 +172,14 @@
 
 /* ── Mobile ── */
 @media (max-width: 780px) {
+  .problem-cards {
+    gap: 10px;
+  }
+  .problem-card {
+    padding: 14px;
+    min-height: auto;
+    gap: 10px;
+  }
   .flow-mobile .flow-metrics {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
