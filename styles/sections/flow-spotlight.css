@@ -33,8 +33,12 @@
 }
 .h2-light {
   font-weight: 300;
-  font-style: italic;
-  color: rgba(248,251,255,0.6);
+  background: linear-gradient(135deg, #505050 0%, #a0a0a8 35%, #636363 60%, #b0b0b8 80%, #505050 100%);
+  background-size: 250% 250%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer-gradient 6s ease-in-out infinite;
 }
 
 .flow-indicators {
@@ -95,6 +99,10 @@
   letter-spacing: -0.02em;
   color: #f8fbff;
   margin-bottom: 1rem;
+  display: block;
+}
+.flow-card-title.highlight-grey {
+  color: transparent;
 }
 .flow-card-desc {
   font-size: 0.9rem;
@@ -311,10 +319,12 @@
   font-weight: 800;
   letter-spacing: -0.06em;
   line-height: 1;
-  background: linear-gradient(135deg, rgba(56,189,248,0.70) 0%, rgba(30,80,208,0.35) 60%, rgba(255,255,255,0.08) 100%);
+  background: linear-gradient(135deg, #dde9ff 0%, #35d8ff 30%, #1e50d0 60%, #35d8ff 85%, #dde9ff 100%);
+  background-size: 250% 250%;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+  animation: shimmer-gradient 6s ease-in-out infinite;
   filter: drop-shadow(0 0 48px rgba(56,189,248,0.25));
   user-select: none;
 }

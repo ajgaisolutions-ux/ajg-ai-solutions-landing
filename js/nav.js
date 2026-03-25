@@ -30,44 +30,6 @@ export function initNav() {
     link.addEventListener("click", closeNav);
   });
 
-  // ── v3 hamburger — inline drawer creation ──
-  if (!window.__hamburgerInit) {
-    window.__hamburgerInit = true;
-    const menuBtnEl = document.querySelector('.menu-btn');
-    if (menuBtnEl) {
-      const drawer = document.createElement('div');
-      drawer.id = 'nav-drawer';
-      drawer.innerHTML = [
-        '<a href="#casos">Casos</a>',
-        '<a href="#proceso">Proceso</a>',
-        '<a href="#resultados">Resultados</a>',
-        '<a href="#faq">FAQ</a>',
-        `<a class="drawer-cta btn primary" href="${CONFIG.BOOKING_URL}">Agenda tu diagnóstico</a>`
-      ].join('');
-      document.body.appendChild(drawer);
-
-      menuBtnEl.addEventListener('click', function() {
-        const open = drawer.classList.toggle('open');
-        menuBtnEl.setAttribute('aria-expanded', open);
-        document.body.style.overflow = open ? 'hidden' : '';
-      });
-
-      drawer.querySelectorAll('a').forEach(function(a) {
-        a.addEventListener('click', function() {
-          drawer.classList.remove('open');
-          document.body.style.overflow = '';
-        });
-      });
-
-      document.addEventListener('touchstart', function(e) {
-        if (drawer.classList.contains('open') && !drawer.contains(e.target) && !menuBtnEl.contains(e.target)) {
-          drawer.classList.remove('open');
-          document.body.style.overflow = '';
-        }
-      }, { passive: true });
-    }
-  }
-
   // ── Sticky nav hide on scroll down ──
   if (!window.__navV3) {
     window.__navV3 = true;

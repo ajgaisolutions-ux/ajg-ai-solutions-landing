@@ -18,8 +18,8 @@
 /* Hero slim (no widget) */
 .hero-slim {
   grid-template-columns: 1fr !important;
-  min-height: auto !important;
-  padding: 22px 2rem 48px;
+  min-height: calc(100vh - 82px) !important;
+  padding: 80px 2rem 80px;
   text-align: center;
   align-items: center;
   justify-items: center;
@@ -92,4 +92,11 @@
 /* Hero poster fallback (unused, kept as safety) */
 .hero-stage__viewer[data-loading="true"] {
   background: radial-gradient(ellipse at 60% 40%, rgba(30,80,208,0.4) 0%, #050816 70%);
+}
+
+@media (max-width: 768px) {
+  .hero-slim {
+    min-height: auto !important;
+    padding: 28px 1.25rem 0px !important;
+  }
 }

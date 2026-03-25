@@ -72,22 +72,25 @@
   border-color: rgba(248,113,113,0.14);
 }
 .pc-badge {
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 0.10em;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  padding: 3px 8px;
+  padding: 3px 10px;
   border-radius: 4px;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.38);
 }
 .pc-badge-alert {
-  background: rgba(248,113,113,0.10);
-  border: 1px solid rgba(248,113,113,0.22);
-  color: #f87171;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.38);
 }
 .pc-badge-muted {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.10);
-  color: rgba(255,255,255,0.42);
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.38);
 }
 .pc-apps {
   display: flex;
@@ -111,20 +114,24 @@
   padding: 0 2px;
 }
 .pc-log {
-  font-family: monospace;
-  font-size: 9px;
-  color: rgba(248,113,113,0.75);
-  background: rgba(248,113,113,0.06);
-  border: 1px solid rgba(248,113,113,0.14);
+  font-family: inherit;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.38);
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.08);
   border-radius: 4px;
-  padding: 4px 9px;
-  letter-spacing: 0.04em;
+  padding: 3px 10px;
   white-space: nowrap;
 }
 .pc-text {
-  font-size: 13.5px;
-  line-height: 1.62;
+  font-size: 17px;
+  line-height: 1.45;
   color: rgba(255,255,255,0.78);
+  text-align: center;
+  font-weight: 500;
 }
 .problem-card:hover {
   transform: translateY(-4px);

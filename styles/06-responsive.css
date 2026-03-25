@@ -58,9 +58,9 @@
 }
 
 /* ── Hide nav at tablet/mobile only ── */
-@media (max-width: 900px) {
-  nav, .top-cta {
-    display: none;
+@media (max-width: 1280px) {
+  header nav, .top-cta {
+    display: none !important;
   }
 }
 
@@ -269,7 +269,8 @@
   .menu-btn { display: flex !important; }
 
   /* Hero */
-  .hero { padding-top: 100px !important; }
+  .hero { padding-top: 80px !important; }
+  .hero-slim { min-height: auto !important; padding: 80px 1.25rem 48px !important; }
   .hero-actions {
     flex-direction: column !important;
     width: 100% !important;
@@ -435,11 +436,12 @@
 @media (max-width: 768px) {
   .problem-grid { grid-template-columns: 1fr !important; }
   .problem-cards { grid-template-columns: 1fr !important; gap: 12px !important; }
+  #problema { padding-top: 72px !important; }
 }
 
 /* cards_texto_pequeno: mínimo legible en cards */
 @media (max-width: 768px) {
-  .pc-text { font-size: 14px !important; line-height: 1.6 !important; }
+  .pc-text { font-size: 15px !important; line-height: 1.5 !important; text-align: center !important; }
   .problem-card { font-size: 14px !important; }
 }
 
@@ -612,7 +614,6 @@
 
 /* ocultar_transformacion + ocultar_flow_section: mobile + tablet */
 @media (max-width: 1024px) {
-  #resultados { display: none !important; }
   #flowSection { display: none !important; }
   /* Resetear el margin negativo que jalaba la sección siguiente al flow */
   #flowSection + .section {

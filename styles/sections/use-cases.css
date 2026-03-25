@@ -29,6 +29,11 @@
   display: grid;
   grid-template-columns: repeat(2, minmax(0,1fr));
   gap: 16px;
+  align-content: start;
+  align-self: start;
+}
+.cases-cards .case-card:last-child {
+  grid-column: 1 / -1;
 }
 
 .case-card {
@@ -37,12 +42,11 @@
   background: rgba(10, 22, 40, 0.55);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  padding: 18px;
+  padding: 16px 18px;
   transition: .3s ease;
   color: rgba(255,255,255,.70);
   font-size: 14px;
   line-height: 1.68;
-  min-height: 110px;
 }
 .case-card:hover {
   transform: translateY(-5px);
@@ -52,20 +56,17 @@
 
 .case-tag {
   display: inline-block;
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: .14em;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(56,189,248,.55);
+  color: rgba(255,255,255,0.38);
   margin-bottom: 8px;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  background: rgba(255,255,255,0.04) !important;
-  border: 1px solid rgba(255,255,255,0.1) !important;
-  border-radius: 4px !important;
-  font-size: 0.7rem !important;
-  letter-spacing: 0.1em !important;
-  padding: 2px 8px !important;
-  color: rgba(255,255,255,0.62) !important;
+  font-family: inherit;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 4px;
+  padding: 3px 10px;
 }
 
 .case-row {

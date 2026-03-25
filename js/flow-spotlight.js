@@ -21,7 +21,7 @@ export function initFlowSpotlight() {
     const vh      = window.innerHeight;
     const scrolled = -rect.top;                       // px scrolleados dentro de la sección
     const sectionH = section.offsetHeight;            // altura real de la sección (~500vh)
-    const shouldShow = scrolled >= vh * 0.8 && scrolled < sectionH - vh * 0.05;
+    const shouldShow = scrolled >= vh * 0.8 && scrolled < sectionH - vh * 1.0;
     pill.classList.toggle('show', shouldShow);
   }
 

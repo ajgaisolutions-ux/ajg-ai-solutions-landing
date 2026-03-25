@@ -76,6 +76,15 @@ h2 {
   animation: shimmer-gradient 6s ease-in-out infinite;
 }
 
+.highlight-grey {
+  background: linear-gradient(135deg, #505050 0%, #a0a0a8 35%, #636363 60%, #b0b0b8 80%, #505050 100%);
+  background-size: 250% 250%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer-gradient 6s ease-in-out infinite;
+}
+
 /* ── Labels ── */
 .micro-label, .eyebrow {
   color: rgba(255,255,255,.62);

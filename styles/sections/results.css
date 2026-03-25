@@ -1,7 +1,195 @@
 /* ═══════════════════════════════════════════════════════
    sections/results.css — AJG AI Solutions
-   Results / transform section
+   Results / transform section + Testimonial carousel
    ═══════════════════════════════════════════════════════ */
+
+/* ── Testimonial Carousel ── */
+.tcarousel {
+  margin-top: 14px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.tcarousel-track-wrap {
+  overflow: hidden;
+  width: 100%;
+  max-width: 420px;
+}
+.tcarousel-track {
+  display: flex;
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.tcarousel-slide {
+  flex: 0 0 100%;
+  min-width: 0;
+}
+
+/* Card */
+.tclient-card {
+  border: 1px solid rgba(255,255,255,0.10);
+  border-top-color: rgba(255,255,255,0.18);
+  background: rgba(10,22,40,0.72);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 24px;
+  padding: 24px 28px;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.32), inset 0 1px 0 rgba(255,255,255,0.09);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Name */
+.tclient-name {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.58);
+  padding-bottom: 16px;
+}
+
+/* Separator */
+.tclient-sep {
+  height: 1px;
+  background: rgba(255,255,255,0.07);
+  margin-bottom: 16px;
+}
+
+/* Logo */
+.tclient-logo-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 0 16px;
+}
+.tclient-logo {
+  height: 52px;
+  width: auto;
+  max-width: 200px;
+  object-fit: contain;
+}
+
+/* Project type */
+.tclient-project {
+  font-size: 0.72rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: rgba(56,189,248,0.72);
+  font-weight: 600;
+  padding-bottom: 16px;
+  line-height: 1.5;
+}
+
+/* Results grid */
+.tclient-results {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  padding-top: 0;
+}
+.tclient-result {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 12px;
+  padding: 12px 8px;
+  text-align: center;
+}
+.tclient-result-num {
+  font-size: clamp(1.1rem, 3vw, 1.4rem);
+  font-weight: 800;
+  color: #f8fbff;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: 5px;
+}
+.tclient-result-label {
+  font-size: 0.58rem;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.4;
+}
+
+/* Dots */
+.tcarousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 16px;
+}
+.tcarousel-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.20);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: width 0.3s ease, background 0.3s ease;
+}
+.tcarousel-dot.active {
+  width: 22px;
+  background: #38bdf8;
+}
+
+/* ── Responsive: Tablet (640px – 1024px) ── */
+@media (min-width: 640px) and (max-width: 1024px) {
+  .tcarousel-track-wrap {
+    max-width: 500px;
+  }
+  .tclient-card {
+    padding: 26px 30px;
+  }
+  .tclient-logo {
+    height: 56px;
+    max-width: 220px;
+  }
+  .tclient-result-num {
+    font-size: 1.4rem;
+  }
+  .tclient-result-label {
+    font-size: 0.63rem;
+  }
+}
+
+/* ── Responsive: Mobile (< 640px) ── */
+@media (max-width: 639px) {
+  .tcarousel-track-wrap {
+    max-width: 100%;
+  }
+  .tclient-card {
+    padding: 20px 18px;
+  }
+  .tclient-name {
+    font-size: 0.78rem;
+  }
+  .tclient-logo {
+    height: 44px;
+    max-width: 170px;
+  }
+  .tclient-project {
+    font-size: 0.68rem;
+    letter-spacing: 0.07em;
+  }
+  .tclient-results {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+  }
+  .tclient-result {
+    padding: 10px 6px;
+    border-radius: 10px;
+  }
+  .tclient-result-num {
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+  }
+  .tclient-result-label {
+    font-size: 0.55rem;
+    letter-spacing: 0.08em;
+  }
+}
 
 /* Result grid */
 .result-grid {
@@ -39,26 +227,37 @@
 .transform-card {
   border: 1px solid rgba(255,255,255,.07);
   border-radius: 16px;
-  padding: 22px 20px;
+  padding: 18px 16px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 10px;
 }
 
 .transform-before {
-  padding-bottom: 14px;
+  padding-bottom: 10px;
   border-bottom: 1px solid rgba(255,255,255,.06);
 }
 
 .transform-label {
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: .16em;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .18em;
   text-transform: uppercase;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 4px;
 }
-.before-label { color: #f87171; opacity: 1; font-weight: 700; letter-spacing: .12em; }
-.after-label { color: #38bdf8; opacity: 1; font-weight: 700; letter-spacing: .12em; }
+.before-label {
+  color: #f87171;
+  background: rgba(248,113,113,0.10);
+  border: 1px solid rgba(248,113,113,0.25);
+}
+.after-label {
+  color: #38bdf8;
+  background: rgba(56,189,248,0.10);
+  border: 1px solid rgba(56,189,248,0.25);
+}
 
 .transform-text {
   font-size: 13px;
@@ -68,15 +267,8 @@
 
 .transform-divider {
   display: flex;
-  align-items: center;
-  gap: 8px;
-  color: rgba(56,189,248,.65);
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: .12em;
-  text-transform: uppercase;
   justify-content: center;
-  padding: 4px 0;
+  padding: 2px 0;
 }
 .transform-divider::before,
 .transform-divider::after {
@@ -87,8 +279,8 @@
 }
 .transform-divider span::after {
   content: '↓';
-  font-size: 16px;
-  color: rgba(56,189,248,0.75);
+  font-size: 20px;
+  color: rgba(56,189,248,0.5);
   letter-spacing: 0;
 }
 
