@@ -419,11 +419,22 @@ export function initMotionEffects() {
     const casosSection = document.querySelector('#casos');
     if (!casosSection) return;
 
-    // Word-by-word on h2
+    // Word-by-word on h2 — observe heading container
     const h2 = casosSection.querySelector('h2');
     const words = h2 ? splitWords(h2) : [];
+    if (words.length && h2) {
+      const obsH2 = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          words.forEach((w, i) => setTimeout(() => w.classList.add('in'), i * 40));
+          obsH2.unobserve(entry.target);
+        });
+      }, { threshold: 0.5 });
+      obsH2.observe(h2);
+    }
 
-    // Stagger on cards
+    // Stagger on cards — observe the cards container directly
+    const cardsWrap = casosSection.querySelector('.cases-cards');
     const cards = Array.from(casosSection.querySelectorAll('.case-card'));
     cards.forEach(c => {
       c.style.opacity = '0';
@@ -431,24 +442,21 @@ export function initMotionEffects() {
       c.style.transition = 'opacity 0.55s ease-out, transform 0.55s ease-out';
     });
 
-    const obs = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        // Fire words
-        words.forEach((w, i) => setTimeout(() => w.classList.add('in'), i * 40));
-        // Fire cards with offset after words start
-        const delay = Math.min(words.length * 40, 300);
-        cards.forEach((c, i) => {
-          setTimeout(() => {
-            c.style.opacity = '';
-            c.style.transform = '';
-            setTimeout(() => { c.style.transition = ''; }, 600);
-          }, delay + i * 110);
+    if (cardsWrap) {
+      const obsCards = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          cards.forEach((c, i) => {
+            setTimeout(() => {
+              c.style.opacity = '';
+              c.style.transform = '';
+              setTimeout(() => { c.style.transition = ''; }, 600);
+            }, i * 110);
+          });
+          obsCards.unobserve(entry.target);
         });
-        obs.unobserve(entry.target);
-      });
-    }, { threshold: 0.12 });
-
-    obs.observe(casosSection);
+      }, { threshold: 0.15 });
+      obsCards.observe(cardsWrap);
+    }
   })();
 }
