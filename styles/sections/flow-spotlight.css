@@ -126,6 +126,20 @@
   padding: 3px 8px;
 }
 
+/* Flow metrics label — mobile/tablet only */
+.flow-metrics-label {
+  display: none;
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(56,189,248,0.55);
+  margin-top: 1.25rem;
+  margin-bottom: 0.25rem;
+}
+@media (max-width: 900px) {
+  .flow-metrics-label { display: block; }
+}
+
 /* Flow metrics */
 .flow-metrics {
   display: grid;
