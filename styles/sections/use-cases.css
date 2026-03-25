@@ -32,8 +32,11 @@
   align-content: start;
   align-self: start;
 }
-.cases-cards .case-card:last-child {
-  grid-column: 1 / -1;
+/* casos_last_card: solo span completo en desktop (>1024px) donde hay 2 columnas */
+@media (min-width: 1025px) {
+  .cases-cards .case-card:last-child {
+    grid-column: 1 / -1;
+  }
 }
 
 .case-card {

@@ -97,6 +97,6 @@
 @media (max-width: 768px) {
   .hero-slim {
     min-height: auto !important;
-    padding: 28px 1.25rem 0px !important;
+    padding: 52px 1.25rem 32px !important;
   }
 }

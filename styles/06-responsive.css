@@ -628,3 +628,60 @@
   #faq .faq-grid .faq-item:nth-child(2),
   #faq .faq-grid .faq-item:nth-child(4) { display: none !important; }
 }
+
+/* ── flow_invisible_movil: alternativa estática del flow para móvil/tablet ── */
+.flow-mobile { display: none; }
+@media (max-width: 1024px) {
+  .flow-mobile { display: block; }
+}
+
+.flow-mobile-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.flow-mobile-step {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 16px;
+  padding: 16px 18px;
+  background: rgba(10,22,40,0.52);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.flow-mobile-num {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  background: linear-gradient(135deg, #dde9ff 0%, #35d8ff 30%, #1e50d0 60%, #35d8ff 85%, #dde9ff 100%);
+  background-size: 250% 250%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer-gradient 6s ease-in-out infinite;
+  flex-shrink: 0;
+  width: 44px;
+  padding-top: 2px;
+}
+
+.flow-mobile-content {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ── problema_cards_larga: ocultar cards 3 y 4 en mobile ── */
+@media (max-width: 768px) {
+  .problem-card-mobile-hide { display: none !important; }
+}
+
+/* ── proceso_muy_largo_movil: reducir tamaño del número y padding ── */
+@media (max-width: 768px) {
+  .process-num { font-size: clamp(2.8rem, 9vw, 4.5rem) !important; }
+  .process-card { min-height: auto !important; padding: 18px !important; }
+  #proceso { padding-top: 52px !important; }
+}
