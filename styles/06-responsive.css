@@ -543,7 +543,14 @@
 
 /* cta_panel_movil: más aire interno en el panel de formulario final */
 @media (max-width: 768px) {
-  .cta-panel { padding: 28px !important; }
+  .cta-panel {
+    padding: 16px !important;
+    max-width: 320px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 100% !important;
+  }
+  .cta-panel .btn { font-size: 0.85rem !important; padding: 12px 20px !important; }
 }
 
 /* faq_q_movil: preguntas del FAQ con tamaño y altura de línea óptimos */
