@@ -346,30 +346,20 @@ export function initMotionEffects() {
     });
 
     if (window.innerWidth <= 1024) {
-      // Mobile + tablet: scroll listener for card reveal + word reveal
-      flowWraps.forEach((wrap, i) => {
-        wrap.classList.add('mj-sch');
-        wrap.style.transitionDelay = (i * 80) + 'ms';
+      // Mobile + tablet: card reveal handled by reveal.js (fade-in-up)
+      // Only handle word-by-word reveal here
+      flowWraps.forEach(wrap => {
+        if (!wordMap.has(wrap)) return;
+        const words = wordMap.get(wrap);
+        const obs = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            words.forEach((w, i) => setTimeout(() => w.classList.add('in'), i * 38));
+            obs.unobserve(entry.target);
+          });
+        }, { threshold: 0.08 });
+        obs.observe(wrap);
       });
-
-      function checkFlow() {
-        let remaining = false;
-        flowWraps.forEach(wrap => {
-          const rect = wrap.getBoundingClientRect();
-          if (rect.top < window.innerHeight * 0.88) {
-            if (!wrap.classList.contains('in')) wrap.classList.add('in');
-            if (wordMap.has(wrap) && !wrap.dataset.wordsIn) {
-              wrap.dataset.wordsIn = '1';
-              wordMap.get(wrap).forEach((w, i) => setTimeout(() => w.classList.add('in'), i * 38));
-            }
-          } else {
-            remaining = true;
-          }
-        });
-        if (!remaining) window.removeEventListener('scroll', checkFlow);
-      }
-      window.addEventListener('scroll', checkFlow, { passive: true });
-      checkFlow();
 
     } else {
       // Desktop: IntersectionObserver for word reveal only (cards use sticky scroll)
