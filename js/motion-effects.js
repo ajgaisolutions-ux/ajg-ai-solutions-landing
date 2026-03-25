@@ -389,4 +389,66 @@ export function initMotionEffects() {
     }, { threshold: 0.10 });
     flowWraps.forEach(el => flowObs.observe(el));
   }
+
+  // ── Casos section: word-by-word on heading + stagger on cards ──
+  (function() {
+    function splitWords(el) {
+      const words = [];
+      [...el.childNodes].forEach(node => {
+        if (node.nodeType === Node.TEXT_NODE) {
+          const frag = document.createDocumentFragment();
+          node.textContent.split(/(\s+)/).forEach(chunk => {
+            if (/\S/.test(chunk)) {
+              const s = document.createElement('span');
+              s.className = 'mj-word';
+              s.textContent = chunk;
+              frag.appendChild(s);
+              words.push(s);
+            } else {
+              frag.appendChild(document.createTextNode(chunk));
+            }
+          });
+          el.replaceChild(frag, node);
+        } else if (node.nodeType === Node.ELEMENT_NODE) {
+          words.push(...splitWords(node));
+        }
+      });
+      return words;
+    }
+
+    const casosSection = document.querySelector('#casos');
+    if (!casosSection) return;
+
+    // Word-by-word on h2
+    const h2 = casosSection.querySelector('h2');
+    const words = h2 ? splitWords(h2) : [];
+
+    // Stagger on cards
+    const cards = Array.from(casosSection.querySelectorAll('.case-card'));
+    cards.forEach(c => {
+      c.style.opacity = '0';
+      c.style.transform = 'translateY(28px)';
+      c.style.transition = 'opacity 0.55s ease-out, transform 0.55s ease-out';
+    });
+
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        // Fire words
+        words.forEach((w, i) => setTimeout(() => w.classList.add('in'), i * 40));
+        // Fire cards with offset after words start
+        const delay = Math.min(words.length * 40, 300);
+        cards.forEach((c, i) => {
+          setTimeout(() => {
+            c.style.opacity = '';
+            c.style.transform = '';
+            setTimeout(() => { c.style.transition = ''; }, 600);
+          }, delay + i * 110);
+        });
+        obs.unobserve(entry.target);
+      });
+    }, { threshold: 0.12 });
+
+    obs.observe(casosSection);
+  })();
 }
