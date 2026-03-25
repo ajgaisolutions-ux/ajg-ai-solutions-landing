@@ -461,5 +461,6 @@
   .flow-v2-card-bignum { font-size: clamp(3.5rem, 20vw, 6rem); }
 
   .flow-metrics { grid-template-columns: repeat(3, minmax(0,1fr)) !important; }
-  .flow-metric { min-width: 0; overflow: hidden; }
+  .flow-metric { min-width: 0; overflow: visible; padding: 0.6rem 0.4rem; }
+  .flow-metric-label { letter-spacing: 0.03em; font-size: 0.55rem; }
 }
