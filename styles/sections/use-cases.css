@@ -32,10 +32,9 @@
   align-content: start;
   align-self: start;
 }
-/* casos_last_card: solo span completo en desktop (>1024px) donde hay 2 columnas */
 @media (min-width: 1025px) {
-  .cases-cards .case-card:last-child {
-    grid-column: 1 / -1;
+  .cases-cards {
+    grid-template-columns: repeat(3, minmax(0,1fr));
   }
 }
 

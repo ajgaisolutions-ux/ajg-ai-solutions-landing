@@ -44,7 +44,6 @@ export function initReveal() {
   const staggerSelectors = [
     '.problem-cards',
     '.benefits-grid',
-    '.cases-cards',
     '.process-grid',
     '.result-grid',
     '.metrics',

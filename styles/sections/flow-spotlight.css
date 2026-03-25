@@ -415,12 +415,17 @@
 
   .flow-v2-heading { font-size: clamp(1.6rem, 5vw, 2.2rem); }
 
-  .flow-v2-right { padding: 0 5% 2rem; }
+  .flow-v2-right {
+    padding: 0 5% 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
 
   .flow-v2-card-wrap {
     height: auto;
     position: relative;
-    padding: 0 0 0.5rem;
+    padding: 0;
     display: block;
   }
 
@@ -429,27 +434,16 @@
   .flow-v2-card-wrap:nth-child(3),
   .flow-v2-card-wrap:nth-child(4) { z-index: auto; }
 
-  .flow-v2-card { max-width: 100%; }
+  .flow-v2-card {
+    max-width: 100%;
+    border-color: rgba(255,255,255,0.16);
+    border-top-color: rgba(255,255,255,0.24);
+  }
 
   .flow-v2-card-bignum { font-size: clamp(4rem, 18vw, 7rem); }
 
-  /* Pill: bottom center on tablet */
-  .flow-v2-pill {
-    position: fixed;
-    right: auto;
-    left: 50%;
-    top: auto;
-    bottom: 1.25rem;
-    transform: translateX(-50%);
-    flex-direction: row;
-    padding: 0.6rem 0.85rem;
-    border-radius: 999px;
-  }
-
-  .flow-v2-pill-dot {
-    width: 3px;
-    height: 3px;
-  }
+  /* Pill: hidden on tablet/mobile (no sticky scroll, pill no longer tracks position) */
+  .flow-v2-pill { display: none !important; }
 }
 
 /* ── Mobile (≤ 480px) ── */
@@ -466,5 +460,6 @@
 
   .flow-v2-card-bignum { font-size: clamp(3.5rem, 20vw, 6rem); }
 
-  .flow-metrics { grid-template-columns: repeat(3,1fr) !important; }
+  .flow-metrics { grid-template-columns: repeat(3, minmax(0,1fr)) !important; }
+  .flow-metric { min-width: 0; overflow: hidden; }
 }

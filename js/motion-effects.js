@@ -63,7 +63,6 @@ export function initMotionEffects() {
   // ── Stagger scroll children ──
   const staggerSelectors = [
     '.problem-cards .problem-card',
-    '.cases-cards .case-card',
     '.process-grid .process-card',
     '.transform-grid .transform-card',
     '.faq-grid .faq-item',
@@ -271,7 +270,6 @@ export function initMotionEffects() {
   // ── Stagger sections ──
   (function() {
     const groups = [
-      { parent: '.cases-cards',    child: '.case-card' },
       { parent: '.process-grid',   child: '.process-card' },
       { parent: '.transform-grid', child: '.transform-card' },
       { parent: '.problem-cards',  child: '.problem-card' },
@@ -306,13 +304,11 @@ export function initMotionEffects() {
 
   // ── Cursor border glow on cards — disabled (replaced by ge-glow aurora) ──
 
-  // ── Flow section word-by-word reveal ──
+  // ── Flow section reveals ──
   (function() {
-    // Helper: walk element, replace text nodes with .mj-word spans in-place
     function splitElementWords(el) {
       const words = [];
-      const childNodes = [...el.childNodes];
-      childNodes.forEach(node => {
+      [...el.childNodes].forEach(node => {
         if (node.nodeType === Node.TEXT_NODE) {
           const frag = document.createDocumentFragment();
           node.textContent.split(/(\s+)/).forEach(chunk => {
@@ -334,61 +330,63 @@ export function initMotionEffects() {
       return words;
     }
 
-    // Collect all word spans per card-wrap
-    const cardWraps = document.querySelectorAll('#flowSection .flow-v2-card-wrap');
-    cardWraps.forEach(wrap => {
-      const allWords = [];
+    const flowWraps = Array.from(document.querySelectorAll('#flowSection .flow-v2-card-wrap'));
 
-      // Title card: split the h2
+    // Build word map for every wrap
+    const wordMap = new Map();
+    flowWraps.forEach(wrap => {
+      const allWords = [];
       const h2 = wrap.querySelector('.flow-v2-heading');
       if (h2) allWords.push(...splitElementWords(h2));
-
-      // Step cards: split .flow-card-title and .flow-card-desc
       const title = wrap.querySelector('.flow-card-title');
       if (title) allWords.push(...splitElementWords(title));
-
       const desc = wrap.querySelector('.flow-card-desc');
       if (desc) allWords.push(...splitElementWords(desc));
-
-      if (!allWords.length) return;
-
-      // Observe the card-wrap; when visible stagger words in
-      const obs = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (!entry.isIntersecting) return;
-          allWords.forEach((w, i) => {
-            setTimeout(() => w.classList.add('in'), i * 38);
-          });
-          obs.unobserve(entry.target);
-        });
-      }, { threshold: 0.18 });
-
-      obs.observe(wrap);
+      if (allWords.length) wordMap.set(wrap, allWords);
     });
-  })();
 
-  // ── Flow cards stagger entrance (mobile only) ──
-  if (window.innerWidth <= 768) {
-    const flowWraps = Array.from(document.querySelectorAll('#flowSection .flow-v2-card-wrap'));
-    flowWraps.forEach(item => {
-      item.style.opacity = '0';
-      item.style.transform = 'translateY(40px)';
-      item.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
-    });
-    const flowObs = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        const idx = flowWraps.indexOf(entry.target);
-        setTimeout(() => {
-          entry.target.style.opacity = '';
-          entry.target.style.transform = '';
-          setTimeout(() => { entry.target.style.transition = ''; }, 650);
-        }, idx * 100);
-        flowObs.unobserve(entry.target);
+    if (window.innerWidth <= 1024) {
+      // Mobile + tablet: scroll listener for card reveal + word reveal
+      flowWraps.forEach((wrap, i) => {
+        wrap.classList.add('mj-sch');
+        wrap.style.transitionDelay = (i * 80) + 'ms';
       });
-    }, { threshold: 0.10 });
-    flowWraps.forEach(el => flowObs.observe(el));
-  }
+
+      function checkFlow() {
+        let remaining = false;
+        flowWraps.forEach(wrap => {
+          const rect = wrap.getBoundingClientRect();
+          if (rect.top < window.innerHeight * 0.88) {
+            if (!wrap.classList.contains('in')) wrap.classList.add('in');
+            if (wordMap.has(wrap) && !wrap.dataset.wordsIn) {
+              wrap.dataset.wordsIn = '1';
+              wordMap.get(wrap).forEach((w, i) => setTimeout(() => w.classList.add('in'), i * 38));
+            }
+          } else {
+            remaining = true;
+          }
+        });
+        if (!remaining) window.removeEventListener('scroll', checkFlow);
+      }
+      window.addEventListener('scroll', checkFlow, { passive: true });
+      checkFlow();
+
+    } else {
+      // Desktop: IntersectionObserver for word reveal only (cards use sticky scroll)
+      flowWraps.forEach(wrap => {
+        if (!wordMap.has(wrap)) return;
+        const words = wordMap.get(wrap);
+        const obs = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            words.forEach((w, i) => setTimeout(() => w.classList.add('in'), i * 38));
+            obs.unobserve(entry.target);
+          });
+        }, { threshold: 0.18 });
+        obs.observe(wrap);
+      });
+    }
+  })();
 
   // ── Casos section: word-by-word on heading + stagger on cards ──
   (function() {
@@ -429,28 +427,31 @@ export function initMotionEffects() {
           words.forEach((w, i) => setTimeout(() => w.classList.add('in'), i * 40));
           obsH2.unobserve(entry.target);
         });
-      }, { threshold: 0.5 });
+      }, { threshold: 0.1 });
       obsH2.observe(h2);
     }
 
-    // Stagger on cards — observe each card individually
+    // Stagger on cards — observe each card individually using CSS class pattern
     const cards = Array.from(casosSection.querySelectorAll('.case-card'));
-    cards.forEach(c => {
-      c.style.opacity = '0';
-      c.style.transform = 'translateY(28px)';
-      c.style.transition = 'opacity 0.55s ease-out, transform 0.55s ease-out';
+    cards.forEach((c, i) => {
+      c.classList.add('mj-sch');
+      c.style.transitionDelay = (i * 80) + 'ms';
     });
 
-    const obsCards = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        entry.target.style.opacity = '';
-        entry.target.style.transform = '';
-        setTimeout(() => { entry.target.style.transition = ''; }, 600);
-        obsCards.unobserve(entry.target);
+    function checkCasoCards() {
+      let remaining = false;
+      cards.forEach(c => {
+        if (c.classList.contains('in')) return;
+        const rect = c.getBoundingClientRect();
+        if (rect.top < window.innerHeight * 0.88) {
+          c.classList.add('in');
+        } else {
+          remaining = true;
+        }
       });
-    }, { threshold: 0.2 });
-
-    cards.forEach(c => obsCards.observe(c));
+      if (!remaining) window.removeEventListener('scroll', checkCasoCards);
+    }
+    window.addEventListener('scroll', checkCasoCards, { passive: true });
+    checkCasoCards();
   })();
 }

@@ -55,7 +55,6 @@ export function initAnimations() {
   // ── Cards (stagger por grupo) ──
   [
     '.problem-cards',
-    '.cases-cards',
     '.process-grid',
     '.result-grid',
     '.bento-grid',
