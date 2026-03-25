@@ -172,6 +172,19 @@
 
 /* ── Mobile ── */
 @media (max-width: 780px) {
+  .flow-mobile .flow-metrics {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .flow-mobile .flow-metric {
+    min-width: 0;
+    padding: 0.75rem 0.5rem;
+  }
+  .flow-mobile .flow-metric-num.highlight-grey {
+    color: transparent !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    font-size: 2rem !important;
+  }
   .eyeline {
     max-width: 100%;
     white-space: normal;
