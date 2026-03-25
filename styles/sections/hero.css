@@ -89,11 +89,6 @@
   background: rgba(45,107,255,.14);
 }
 
-/* Hero poster fallback (unused, kept as safety) */
-.hero-stage__viewer[data-loading="true"] {
-  background: radial-gradient(ellipse at 60% 40%, rgba(30,80,208,0.4) 0%, #050816 70%);
-}
-
 @media (max-width: 768px) {
   .hero-slim {
     min-height: 100svh !important;

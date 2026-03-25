@@ -406,10 +406,6 @@
   .widget-showcase .system-grid { grid-template-columns: repeat(2, 1fr) !important; }
 }
 
-@media (max-width: 640px) {
-  #spline-bg { display: none; }
-}
-
 @media (max-width: 480px) {
   .bento-grid { gap: 6px; }
   .bento-card { padding: 0.75rem; }
@@ -542,7 +538,7 @@
 }
 
 /* cta_panel_movil: más aire interno en el panel de formulario final */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .cta-panel {
     padding: 16px !important;
     max-width: 320px !important;
@@ -607,7 +603,7 @@
 }
 
 /* siguiente_paso_movil: layout de 1 columna con espaciado correcto */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .cta-shell {
     margin-left: 0 !important;
     margin-right: 0 !important;
@@ -668,6 +664,20 @@
 .flow-mobile { display: none; }
 @media (max-width: 1024px) {
   .flow-mobile { display: block; }
+}
+
+/* ── flow_tablet_grid: 2 columnas en tablet (640–1024px) ── */
+@media (min-width: 640px) and (max-width: 1024px) {
+  .flow-mobile-steps {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .flow-mobile .flow-metrics {
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 .flow-mobile-steps {

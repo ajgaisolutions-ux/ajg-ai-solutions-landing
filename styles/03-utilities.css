@@ -128,23 +128,18 @@ h2 {
   align-items: center;
   gap: 12px;
   padding: 10px 16px;
-  border-radius: 999px;
-  border: 1px solid rgba(255,255,255,.10);
-  background: rgba(255,255,255,.05);
+  border-radius: 4px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.055);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   color: rgba(255,255,255,.68);
-  font-size: 11px;
-  letter-spacing: .22em;
+  font-size: 0.68rem;
+  letter-spacing: 0.07em;
   text-transform: uppercase;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   animation: badgeFloat 4.5s ease-in-out infinite;
   max-width: fit-content;
-  background: rgba(255,255,255,0.055) !important;
-  border: 1px solid rgba(255,255,255,0.12) !important;
-  border-radius: 4px !important;
-  font-size: 0.68rem !important;
-  letter-spacing: 0.07em !important;
 }
 .badge-dot {
   width: 8px;
