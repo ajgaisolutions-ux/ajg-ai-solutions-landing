@@ -699,6 +699,11 @@
 @media (max-width: 768px) {
   .problem-card-mobile-hide { display: none !important; }
 }
+/* problem-card-mobile-only: solo visible en mobile ── */
+.problem-card-mobile-only { display: none !important; }
+@media (max-width: 780px) {
+  .problem-card-mobile-only { display: flex !important; }
+}
 
 /* ── proceso_muy_largo_movil: reducir tamaño del número y padding ── */
 @media (max-width: 768px) {
