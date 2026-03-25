@@ -189,12 +189,12 @@
     overflow: hidden;
   }
   .tclient-result-num {
-    font-size: 1.1rem;
-    margin-bottom: 4px;
+    font-size: 0.82rem;
+    margin-bottom: 3px;
   }
   .tclient-result-label {
-    font-size: 0.52rem;
-    letter-spacing: 0.03em;
+    font-size: 0.48rem;
+    letter-spacing: 0.02em;
   }
 }
 
