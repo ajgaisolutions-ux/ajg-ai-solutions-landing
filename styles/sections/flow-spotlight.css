@@ -129,15 +129,16 @@
 /* Flow metrics label — mobile/tablet only */
 .flow-metrics-label {
   display: none;
-  font-size: 0.6rem;
-  letter-spacing: 0.12em;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(56,189,248,0.55);
+  color: rgba(56,189,248,0.80);
   margin-top: 1.25rem;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.4rem;
+  font-weight: 600;
 }
 @media (max-width: 900px) {
-  .flow-metrics-label { display: block; }
+  .flow-metrics-label { display: block !important; }
 }
 
 /* Flow metrics */
