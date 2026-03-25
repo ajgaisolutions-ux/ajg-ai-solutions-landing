@@ -433,8 +433,7 @@ export function initMotionEffects() {
       obsH2.observe(h2);
     }
 
-    // Stagger on cards — observe the cards container directly
-    const cardsWrap = casosSection.querySelector('.cases-cards');
+    // Stagger on cards — observe each card individually
     const cards = Array.from(casosSection.querySelectorAll('.case-card'));
     cards.forEach(c => {
       c.style.opacity = '0';
@@ -442,21 +441,16 @@ export function initMotionEffects() {
       c.style.transition = 'opacity 0.55s ease-out, transform 0.55s ease-out';
     });
 
-    if (cardsWrap) {
-      const obsCards = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (!entry.isIntersecting) return;
-          cards.forEach((c, i) => {
-            setTimeout(() => {
-              c.style.opacity = '';
-              c.style.transform = '';
-              setTimeout(() => { c.style.transition = ''; }, 600);
-            }, i * 110);
-          });
-          obsCards.unobserve(entry.target);
-        });
-      }, { threshold: 0.15 });
-      obsCards.observe(cardsWrap);
-    }
+    const obsCards = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.style.opacity = '';
+        entry.target.style.transform = '';
+        setTimeout(() => { entry.target.style.transition = ''; }, 600);
+        obsCards.unobserve(entry.target);
+      });
+    }, { threshold: 0.2 });
+
+    cards.forEach(c => obsCards.observe(c));
   })();
 }
