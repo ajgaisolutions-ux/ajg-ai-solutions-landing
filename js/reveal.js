@@ -69,6 +69,16 @@ export function initReveal() {
 
   allFadeEls.forEach(el => observer2.observe(el));
 
+  // ── Flow cards: fade-in-up on mobile + tablet only (desktop uses sticky scroll) ──
+  if (window.innerWidth <= 1024) {
+    document.querySelectorAll('#flowSection .flow-v2-card-wrap').forEach(el => {
+      if (!el.classList.contains('fade-in-up')) {
+        el.classList.add('fade-in-up');
+        observer2.observe(el);
+      }
+    });
+  }
+
   document.querySelectorAll(".fade-in-up, .scroll-reveal").forEach(el => {
     if (!allFadeEls.includes(el)) {
       observer2.observe(el);
