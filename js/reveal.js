@@ -77,6 +77,15 @@ export function initReveal() {
         observer2.observe(el);
       }
     });
+
+    // ── flow-mobile steps stagger (the static fallback visible on tablet/mobile) ──
+    document.querySelectorAll('.flow-mobile-step').forEach((el, i) => {
+      if (!el.classList.contains('fade-in-up')) {
+        el.classList.add('fade-in-up');
+        el.style.transitionDelay = (i * 90) + 'ms';
+        observer2.observe(el);
+      }
+    });
   }
 
   document.querySelectorAll(".fade-in-up, .scroll-reveal").forEach(el => {
