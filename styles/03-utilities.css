@@ -341,3 +341,9 @@ h2 {
 
 /* ── Cursor border glow ── */
 .mj-glow { position: relative; }
+
+/* ── Eyebrow: mobile adjustments ── */
+@media (max-width: 640px) {
+  .eyebrow::before { display: none; }
+  .eyebrow { letter-spacing: .10em; }
+}

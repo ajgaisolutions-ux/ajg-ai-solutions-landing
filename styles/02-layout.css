@@ -338,3 +338,8 @@ nav a:hover { color: #fff; }
   font-size: 16px;
   line-height: 1.72;
 }
+
+/* ── Nav: ocultar nombre en móvil ── */
+@media (max-width: 640px) {
+  .brand-copy { display: none; }
+}
