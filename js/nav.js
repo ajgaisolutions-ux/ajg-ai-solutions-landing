@@ -14,6 +14,8 @@ export function initNav() {
     menuBtn?.setAttribute("aria-expanded", "true");
     mobileNav?.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
+    // Always show navbar when menu opens
+    document.querySelector('.nav-shell')?.classList.remove('nav-hidden');
   }
   function closeNav() {
     mobileNav?.classList.remove("open");
@@ -39,8 +41,32 @@ export function initNav() {
     document.body.classList.toggle('nav-scrolled', scrolled);
   }
 
+  // ── Smart navbar: hide on scroll down, show on scroll up ──
+  const navShell = document.querySelector('.nav-shell');
+  let lastScrollY = window.scrollY;
+  const HIDE_THRESHOLD = 80;
+  const DELTA = 5;
+
+  function updateSmartNav() {
+    const currentY = window.scrollY;
+    // Never hide while mobile nav is open
+    if (mobileNav?.classList.contains('open')) {
+      lastScrollY = currentY;
+      return;
+    }
+    if (currentY <= HIDE_THRESHOLD) {
+      navShell?.classList.remove('nav-hidden');
+    } else if (currentY - lastScrollY > DELTA) {
+      navShell?.classList.add('nav-hidden');
+    } else if (lastScrollY - currentY > DELTA) {
+      navShell?.classList.remove('nav-hidden');
+    }
+    lastScrollY = currentY;
+  }
+
   // Primary: scroll events (belt & suspenders)
   window.addEventListener('scroll', updatePillNav, { passive: true });
+  window.addEventListener('scroll', updateSmartNav, { passive: true });
   document.addEventListener('scroll', updatePillNav, { passive: true });
 
   // Reliable fallback: sentinel div just below the header
