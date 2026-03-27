@@ -92,7 +92,7 @@
 @media (max-width: 768px) {
   .hero-slim {
     min-height: auto !important;
-    padding: 52px 1.5rem 48px !important;
+    padding: 52px 1.5rem 28px !important;
   }
   /* Elimina el doble padding que aplica la regla general de layout */
   .hero-slim > div {
