@@ -28,6 +28,12 @@ section {
   box-sizing: border-box;
 }
 
+/* ── scroll_offset: compensate fixed navbar on anchor nav ── */
+section[id],
+div[id="proceso"] {
+  scroll-margin-top: 90px;
+}
+
 section > .inner {
   max-width: 1100px;
   margin-left: auto;
