@@ -347,8 +347,8 @@ nav a:hover { color: #fff; }
 /* ── Quiénes Somos: móvil ── */
 @media (max-width: 640px) {
   #quienes .inner {
-    padding-left: 0.5rem !important;
-    padding-right: 0.5rem !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
   }
   #quienes .inner > div {
     padding: 28px 16px !important;
