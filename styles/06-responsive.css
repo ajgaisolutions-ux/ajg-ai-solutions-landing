@@ -730,7 +730,8 @@
     text-align: center !important;
     align-items: center !important;
   }
-  #quienes img { width: 52px !important; height: 52px !important; }
+  #quienes img { width: 72px !important; height: 72px !important; }
+  #quienes h2 { font-size: clamp(1.8rem, 6vw, 2.2rem) !important; }
   #quienes p { text-align: center !important; }
 }
 
