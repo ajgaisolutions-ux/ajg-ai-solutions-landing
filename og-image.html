@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  @import url('https://api.fontshare.com/v2/css?f[]=neue-machina@700,500,400&display=swap');
+
+  body {
+    width: 1200px;
+    height: 630px;
+    overflow: hidden;
+    background: #071425;
+    font-family: 'Neue Machina', Inter, system-ui, sans-serif;
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  /* Background gradient */
+  .bg-glow-left {
+    position: absolute;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(30,80,208,0.45) 0%, transparent 70%);
+    left: -100px; top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+  .bg-glow-right {
+    position: absolute;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(6,182,212,0.18) 0%, transparent 70%);
+    right: 0; top: 0;
+    pointer-events: none;
+  }
+
+  /* Left column — logo */
+  .left {
+    position: relative;
+    z-index: 2;
+    width: 420px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 40px 0 60px;
+    height: 100%;
+    border-right: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .logo {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 40px rgba(34,120,255,0.6)) drop-shadow(0 0 60px rgba(6,182,212,0.4));
+    margin-bottom: 20px;
+  }
+
+  .brand-name {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.75);
+    text-align: center;
+    line-height: 1.4;
+  }
+
+  /* Right column — copy */
+  .right {
+    position: relative;
+    z-index: 2;
+    flex: 1;
+    padding: 0 60px 0 56px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .eyebrow {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(56,189,248,0.85);
+    margin-bottom: 20px;
+  }
+
+  .headline {
+    font-size: 58px;
+    font-weight: 700;
+    line-height: 1.05;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+
+  .headline .highlight {
+    background: linear-gradient(90deg, #38bdf8 0%, #1e50d0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .sub {
+    font-size: 18px;
+    line-height: 1.6;
+    color: rgba(248,251,255,0.55);
+    margin-top: 20px;
+    max-width: 560px;
+  }
+
+  .url {
+    margin-top: 32px;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    color: rgba(255,255,255,0.28);
+  }
+</style>
+</head>
+<body>
+  <div class="bg-glow-left"></div>
+  <div class="bg-glow-right"></div>
+
+  <div class="left">
+    <img class="logo" src="./Logo_AJG_AI_SOLUTIONS_sinfondo_2.png" alt="AJG AI SOLUTIONS">
+    <div class="brand-name">AJG AI<br>SOLUTIONS</div>
+  </div>
+
+  <div class="right">
+    <div class="eyebrow">Automatización inteligente</div>
+    <div class="headline">
+      Automatiza<br><span class="highlight">lo que te frena.</span>
+    </div>
+    <div class="sub">Convertimos procesos repetitivos en flujos automáticos que operan sin depender de ti.</div>
+    <div class="url">ajgaisolutions.com</div>
+  </div>
+</body>
+</html>
