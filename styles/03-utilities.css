@@ -345,5 +345,10 @@ h2 {
 /* ── Eyebrow: mobile adjustments ── */
 @media (max-width: 640px) {
   .eyebrow::before { display: none; }
-  .eyebrow { letter-spacing: .10em; }
+  .eyebrow {
+    letter-spacing: .08em;
+    font-size: 9px;
+    justify-content: center;
+    text-align: center;
+  }
 }
