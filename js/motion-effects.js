@@ -203,23 +203,26 @@ export function initMotionEffects() {
   // ── Section exit blur/fade on scroll ──
   (function() {
     if (window.innerWidth <= 768) return;
-    // flowSection has sticky children — filter breaks sticky, so only fade it
-    const NO_FILTER = ['flowSection'];
     const sections  = Array.from(document.querySelectorAll('section[id]:not(#hero)'));
     let ticking = false;
     const vh = window.innerHeight;
 
     function update() {
       sections.forEach(sec => {
-        const rect     = sec.getBoundingClientRect();
-        const useBlur  = !NO_FILTER.includes(sec.id);
+        const rect = sec.getBoundingClientRect();
 
         if (rect.top < 0 && rect.bottom > 0) {
-          // Section exiting upward
-          const prog    = Math.min(1, Math.max(0, -rect.top / (vh * 1.2)));
-          const opacity = Math.max(0, 1 - prog * 0.28).toFixed(3);
+          // Tall sticky sections (proceso): only blur/fade in the last viewport
+          // so sticky cards don't break mid-scroll
+          let prog;
+          if (sec.offsetHeight > vh * 3) {
+            prog = Math.min(1, Math.max(0, 1 - rect.bottom / vh));
+          } else {
+            prog = Math.min(1, Math.max(0, -rect.top / (vh * 1.5)));
+          }
+          const opacity = Math.max(0, 1 - prog * 0.22).toFixed(3);
           sec.style.opacity = opacity;
-          if (useBlur) sec.style.filter = 'blur(' + (prog * 1.2).toFixed(1) + 'px)';
+          sec.style.filter = 'blur(' + (prog * 0.8).toFixed(1) + 'px)';
         } else {
           sec.style.opacity = '';
           sec.style.filter  = '';
@@ -338,10 +341,6 @@ export function initMotionEffects() {
       const allWords = [];
       const h2 = wrap.querySelector('.flow-v2-heading');
       if (h2) allWords.push(...splitElementWords(h2));
-      const title = wrap.querySelector('.flow-card-title');
-      if (title) allWords.push(...splitElementWords(title));
-      const desc = wrap.querySelector('.flow-card-desc');
-      if (desc) allWords.push(...splitElementWords(desc));
       if (allWords.length) wordMap.set(wrap, allWords);
     });
 

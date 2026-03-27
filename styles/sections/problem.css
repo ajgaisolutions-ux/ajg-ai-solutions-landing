@@ -26,117 +26,58 @@
   align-items: center;
 }
 
-.problem-cards {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0,1fr));
-  gap: 16px;
-}
-
-.problem-card {
-  border-radius: 28px;
-  border: 1px solid rgba(255,255,255,.18);
-  background: rgba(10,22,40,0.42);
-  -webkit-backdrop-filter: blur(16px) saturate(135%);
-  backdrop-filter: blur(16px) saturate(135%);
-  box-shadow: 0 10px 40px rgba(0,0,0,.18), inset 0 1px 0 rgba(255,255,255,.08);
-  padding: 22px;
-  color: rgba(255,255,255,.86);
-  line-height: 1.68;
-  transition: .3s ease;
-  min-height: 150px;
+/* ── Editorial numbered list ── */
+.problem-list {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 10px;
 }
 
-/* ── Problem card visual elements ── */
-.pc-visual {
+.problem-item {
+  padding: 20px 24px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 12px;
+}
+
+.problem-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+  line-height: 1.3;
   display: flex;
   align-items: center;
   gap: 10px;
-  flex-wrap: wrap;
+  background: linear-gradient(90deg,
+    rgba(255,255,255,0.55) 0%,
+    rgba(255,255,255,0.55) 30%,
+    rgba(255,255,255,0.95) 50%,
+    rgba(255,255,255,0.55) 70%,
+    rgba(255,255,255,0.55) 100%
+  );
+  background-size: 250% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer-bento 4s linear infinite;
 }
-.pc-icon {
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
-  background: rgba(56,189,248,0.07);
-  border: 1px solid rgba(56,189,248,0.14);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.problem-title::before {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 2px;
+  background: rgba(53,216,255,0.5);
   flex-shrink: 0;
+  border-radius: 2px;
+  -webkit-text-fill-color: initial;
+  background-clip: initial;
+  -webkit-background-clip: initial;
 }
-.pc-icon--warn {
-  background: rgba(248,113,113,0.07);
-  border-color: rgba(248,113,113,0.14);
-}
-.pc-badge {
-  font-size: 10px;
-  font-weight: 400;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  padding: 3px 10px;
-  border-radius: 4px;
-  background: transparent;
-  border: 1px solid rgba(255,255,255,0.08);
-  color: rgba(255,255,255,0.38);
-}
-.pc-badge-alert {
-  background: transparent;
-  border: 1px solid rgba(255,255,255,0.08);
-  color: rgba(255,255,255,0.38);
-}
-.pc-badge-muted {
-  background: transparent;
-  border: 1px solid rgba(255,255,255,0.08);
-  color: rgba(255,255,255,0.38);
-}
-.pc-apps {
-  display: flex;
-  gap: 6px;
-  align-items: center;
-}
-.pc-app {
-  width: 26px;
-  height: 26px;
-  border-radius: 7px;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.10);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.pc-app-sep {
-  font-size: 10px;
-  color: rgba(255,255,255,0.20);
-  letter-spacing: 0.05em;
-  padding: 0 2px;
-}
-.pc-log {
-  font-family: inherit;
-  font-size: 10px;
-  font-weight: 400;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.38);
-  background: transparent;
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 4px;
-  padding: 3px 10px;
-  white-space: nowrap;
-}
-.pc-text {
-  font-size: 17px;
-  line-height: 1.45;
-  color: rgba(255,255,255,0.78);
-  text-align: center;
-  font-weight: 500;
-}
-.problem-card:hover {
-  transform: translateY(-4px);
-  background: rgba(255,255,255,.05);
-  border-color: rgba(255,255,255,.14);
+
+.problem-desc {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.48);
 }
 
 /* Prob-sol layout */

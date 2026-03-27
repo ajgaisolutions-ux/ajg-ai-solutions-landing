@@ -27,14 +27,14 @@
 
 /* Card */
 .tclient-card {
-  border: 1px solid rgba(255,255,255,0.10);
-  border-top-color: rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,.09);
+  border-top-color: rgba(255,255,255,.16);
   background: rgba(10,22,40,0.72);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-radius: 24px;
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  border-radius: 20px;
   padding: 24px 28px;
-  box-shadow: 0 16px 48px rgba(0,0,0,0.32), inset 0 1px 0 rgba(255,255,255,0.09);
+  box-shadow: 0 8px 32px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.09);
   display: flex;
   flex-direction: column;
   gap: 0;
@@ -232,9 +232,13 @@
 }
 
 .transform-card {
-  border: 1px solid rgba(255,255,255,.07);
-  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,.09);
+  border-top-color: rgba(255,255,255,.16);
+  border-radius: 20px;
   padding: 18px 16px;
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  box-shadow: 0 8px 32px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.09);
   display: flex;
   flex-direction: column;
   gap: 10px;

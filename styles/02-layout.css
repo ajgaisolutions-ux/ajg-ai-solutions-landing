@@ -7,6 +7,20 @@
   position: relative;
   z-index: 2;
   width: 100%;
+  padding-top: 80px;
+}
+
+/* ── Floating pill nav shell ── */
+.nav-shell {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  padding: 0 1.5rem;
+  pointer-events: none;
 }
 
 section {
@@ -40,27 +54,65 @@ section > div:not([class]):not([style*="position:absolute"]):not([style*="z-inde
 
 /* ── Header / Nav ── */
 header {
+  pointer-events: auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
   padding: 22px 2rem 10px;
+  width: 100%;
   max-width: 1100px;
-  margin-left: auto;
-  margin-right: auto;
+  border-radius: 0;
+  background: transparent;
+  border: 1px solid transparent;
+  box-shadow: none;
+  margin-top: 0;
+  transition:
+    max-width 0.48s cubic-bezier(0.4,0,0.2,1),
+    padding 0.48s cubic-bezier(0.4,0,0.2,1),
+    border-radius 0.48s cubic-bezier(0.4,0,0.2,1),
+    background 0.4s ease,
+    border-color 0.4s ease,
+    box-shadow 0.4s ease,
+    margin-top 0.48s cubic-bezier(0.4,0,0.2,1);
+}
+
+/* Pill state on scroll */
+body.nav-scrolled header {
+  max-width: min(780px, calc(100vw - 3rem));
+  padding: 10px 18px 10px 16px;
+  margin-top: 14px;
+  border-radius: 999px;
+  background: rgba(7, 14, 32, 0.82);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  backdrop-filter: blur(24px) saturate(160%);
+  border-color: rgba(255,255,255,0.11);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.38), inset 0 1px 0 rgba(255,255,255,0.07);
 }
 
 /* ── Brand ── */
 .brand {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 16px;
   min-width: 0;
 }
+
+/* Hide brand name when pill is active */
+.brand-copy {
+  overflow: hidden;
+  max-width: 260px;
+  opacity: 1;
+  transition: max-width 0.4s ease, opacity 0.25s ease;
+}
+body.nav-scrolled .brand-copy {
+  max-width: 0;
+  opacity: 0;
+}
 .brand-mark {
-  width: 52px;
-  height: 52px;
-  border-radius: 14px;
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
   border: none;
   background: transparent;
   display: grid;
@@ -68,19 +120,31 @@ header {
   flex: 0 0 auto;
 }
 .brand-mark img {
-  width: 48px;
-  height: 48px;
+  width: 60px;
+  height: 60px;
   object-fit: contain;
   display: block;
-  filter: drop-shadow(0 2px 12px rgba(34,120,255,.35)) drop-shadow(0 0 22px rgba(6,182,212,.20));
+  filter: drop-shadow(0 2px 16px rgba(34,120,255,.45)) drop-shadow(0 0 28px rgba(6,182,212,.28));
 }
 .brand-copy .name {
-  font-size: 13px;
+  font-family: 'Neue Machina', sans-serif;
+  font-size: 15px;
   font-weight: 700;
-  color: rgba(255,255,255,.95);
   line-height: 1.2;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
+  white-space: nowrap;
+  background: linear-gradient(90deg, #fff 0%, #8fa3b8 40%, #fff 60%, #8fa3b8 80%, #fff 100%);
+  background-size: 250% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: shimmer-brand 5s linear infinite;
+}
+@keyframes shimmer-brand {
+  0%   { background-position: 0% center; }
+  100% { background-position: 250% center; }
 }
 .brand-copy .sub {
   margin-top: 4px;
@@ -107,8 +171,10 @@ nav a {
   letter-spacing: .18em;
   text-transform: uppercase;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  white-space: nowrap;
 }
 nav a:hover { color: #fff; }
+
 
 /* ── Top CTA ── */
 .top-cta {
@@ -172,7 +238,7 @@ nav a:hover { color: #fff; }
   display: none;
   position: fixed;
   inset: 0;
-  z-index: 50;
+  z-index: 110;
   pointer-events: none;
 }
 .mobile-nav-backdrop {

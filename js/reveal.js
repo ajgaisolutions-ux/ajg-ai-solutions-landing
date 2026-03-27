@@ -14,7 +14,7 @@ export function initReveal() {
   // ── fade-in-up and scroll-reveal observer ──
   const fadeSelectors = [
     '.card',
-    '.problem-card',
+    '.problem-item',
     '.benefit-card',
     '.process-card',
     '.faq-item',
@@ -24,6 +24,8 @@ export function initReveal() {
     '.metric',
     '.wf-field',
     '.bento-card',
+    '.case-card',
+    '.cases-header',
     'section h2',
     'section h3'
   ];
@@ -47,7 +49,8 @@ export function initReveal() {
     '.process-grid',
     '.result-grid',
     '.metrics',
-    '.stack-grid'
+    '.stack-grid',
+    '.cases-cards'
   ];
   staggerSelectors.forEach(sel => {
     try {
@@ -87,6 +90,11 @@ export function initReveal() {
       }
     });
   }
+
+  // ── Problem items: staggered fade-in-up ──
+  document.querySelectorAll('.problem-item').forEach((el, i) => {
+    el.style.transitionDelay = (i * 90) + 'ms';
+  });
 
   document.querySelectorAll(".fade-in-up, .scroll-reveal").forEach(el => {
     if (!allFadeEls.includes(el)) {

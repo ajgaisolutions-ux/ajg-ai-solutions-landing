@@ -87,6 +87,7 @@
 
 /* Flow card */
 .flow-card-step-label {
+  font-family: 'Neue Machina', sans-serif;
   font-size: 0.65rem;
   letter-spacing: 0.14em;
   color: rgba(56,189,248,0.8);
@@ -293,6 +294,7 @@
   border-radius: 28px;
   width: 100%;
   max-width: 520px;
+  min-height: 380px;
   margin: 0 auto;
   box-shadow: 0 24px 64px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.10);
   position: relative;

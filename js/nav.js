@@ -23,28 +23,36 @@ export function initNav() {
     document.body.style.overflow = "";
   }
 
-  menuBtn?.addEventListener("click", openNav);
+  menuBtn?.addEventListener("click", () => {
+    mobileNav?.classList.contains("open") ? closeNav() : openNav();
+  });
   mobileNavClose?.addEventListener("click", closeNav);
   mobileNavBackdrop?.addEventListener("click", closeNav);
   document.querySelectorAll(".mobile-nav a").forEach(link => {
     link.addEventListener("click", closeNav);
   });
 
-  // ── Sticky nav hide on scroll down ──
-  if (!window.__navV3) {
-    window.__navV3 = true;
-    const header = document.querySelector('header');
-    if (header) {
-      let lastY = 0;
-      window.addEventListener('scroll', () => {
-        const y = window.scrollY;
-        if (y > 80 && y > lastY) {
-          header.classList.add('nav-hidden');
-        } else {
-          header.classList.remove('nav-hidden');
-        }
-        lastY = Math.max(0, y);
-      }, { passive: true });
-    }
+  // ── Floating pill nav on scroll ──
+  function updatePillNav() {
+    const scrolled = (window.scrollY || window.pageYOffset ||
+      document.documentElement.scrollTop || document.body.scrollTop) > 60;
+    document.body.classList.toggle('nav-scrolled', scrolled);
   }
+
+  // Primary: scroll events (belt & suspenders)
+  window.addEventListener('scroll', updatePillNav, { passive: true });
+  document.addEventListener('scroll', updatePillNav, { passive: true });
+
+  // Reliable fallback: sentinel div just below the header
+  // Triggers as soon as the user scrolls ~100px — doesn't depend on scroll events
+  const sentinel = document.getElementById('nav-sentinel');
+  if (sentinel) {
+    const pillObs = new IntersectionObserver(
+      ([entry]) => document.body.classList.toggle('nav-scrolled', !entry.isIntersecting),
+      { threshold: 0 }
+    );
+    pillObs.observe(sentinel);
+  }
+
+  updatePillNav();
 }

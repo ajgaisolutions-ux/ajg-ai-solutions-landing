@@ -52,15 +52,19 @@
   .benefits-grid, .cases-cards, .process-grid, .stack-grid {
     grid-template-columns: 1fr 1fr;
   }
-  .problem-cards {
-    grid-template-columns: 1fr 1fr;
-  }
 }
 
 /* ── Hide nav at tablet/mobile only ── */
-@media (max-width: 1280px) {
+@media (max-width: 900px) {
   header nav, .top-cta {
     display: none !important;
+  }
+  /* Pill scrolled: compacto logo + hamburger */
+  body.nav-scrolled header {
+    max-width: fit-content;
+    min-width: 0;
+    padding: 8px 12px 8px 10px;
+    gap: 10px;
   }
 }
 
@@ -172,14 +176,6 @@
 
 /* ── Mobile ── */
 @media (max-width: 780px) {
-  .problem-cards {
-    gap: 10px;
-  }
-  .problem-card {
-    padding: 14px;
-    min-height: auto;
-    gap: 10px;
-  }
   .flow-mobile .flow-metrics {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -238,7 +234,7 @@
   .flow-row {
     grid-template-columns: repeat(2, minmax(0,1fr));
   }
-  .metrics, .result-grid, .problem-cards, .benefits-grid, .cases-cards, .process-grid, .stack-grid {
+  .metrics, .result-grid, .benefits-grid, .cases-cards, .process-grid, .stack-grid {
     grid-template-columns: 1fr;
   }
   .step-connector {
@@ -292,6 +288,14 @@
   header nav { display: none !important; }
   .top-cta { display: none !important; }
   .menu-btn { display: flex !important; }
+  .brand-copy .name {
+    font-size: 13.5px !important;
+    letter-spacing: 0.07em !important;
+  }
+  .brand-copy .sub { display: none; }
+  .brand-mark { width: 68px !important; height: 68px !important; }
+  .brand-mark img { width: 64px !important; height: 64px !important; }
+  .brand-copy { max-width: 200px !important; }
 
   /* Hero */
   .hero { padding-top: 80px !important; }
@@ -412,16 +416,12 @@
   .widget-showcase .system-grid { grid-template-columns: 1fr !important; }
 }
 
-/* ── Show hamburger at 1280px ── */
-@media (max-width: 1280px) {
+/* ── Show hamburger at 900px and below ── */
+@media (max-width: 900px) {
   .menu-btn { display: flex; }
   .mobile-nav { display: block; }
 }
 
-/* ── problema_mobile_grid: 1 columna en mobile ── */
-@media (max-width: 640px) {
-  .problem-cards { grid-template-columns: 1fr !important; }
-}
 
 /* ── faq_una_columna_desktop: 2 columnas en desktop ── */
 @media (min-width: 1024px) {
@@ -456,15 +456,9 @@
 /* problema_grid_movil: colapsar a 1 columna full-width */
 @media (max-width: 768px) {
   .problem-grid { grid-template-columns: 1fr !important; }
-  .problem-cards { grid-template-columns: 1fr !important; gap: 12px !important; }
   #problema { padding-top: 72px !important; }
 }
 
-/* cards_texto_pequeno: mínimo legible en cards */
-@media (max-width: 768px) {
-  .pc-text { font-size: 15px !important; line-height: 1.5 !important; text-align: center !important; }
-  .problem-card { font-size: 14px !important; }
-}
 
 /* hero_tag_ilegible: ocultar etiqueta superior en mobile */
 @media (max-width: 480px) {
@@ -486,7 +480,7 @@
 
 /* cards_padding_movil: mínimo 20px de padding en todas las cards */
 @media (max-width: 768px) {
-  .card, .process-card, .case-card, .benefit-card, .result-card, .problem-card,
+  .card, .process-card, .case-card, .benefit-card, .result-card,
   .faq-item, .transform-card, .bento-card { padding: 20px !important; }
 }
 
@@ -571,7 +565,7 @@
 
 /* line_height_body_movil: más espacio entre líneas en textos de lectura */
 @media (max-width: 768px) {
-  .hero-copy, .flow-card-desc, .pc-text { line-height: 1.7 !important; }
+  .hero-copy, .flow-card-desc { line-height: 1.7 !important; }
 }
 
 /* metric_num_movil: números de métricas con más impacto visual */
@@ -591,7 +585,7 @@
 
 /* gap_sections_movil: separación mínima 12px en todos los grids */
 @media (max-width: 768px) {
-  .problem-cards, .cases-cards, .process-grid, .transform-grid,
+  .cases-cards, .process-grid, .transform-grid,
   .benefits-grid, .stack-grid, .faq-grid { gap: 12px !important; }
 }
 
@@ -664,6 +658,7 @@
 .flow-mobile { display: none; }
 @media (max-width: 1024px) {
   .flow-mobile { display: block; }
+  .flow-section-v2 { display: none; }
 }
 
 /* ── flow_tablet_grid: 2 columnas en tablet (640–1024px) ── */
@@ -719,19 +714,21 @@
   min-width: 0;
 }
 
-/* ── problema_cards_larga: ocultar cards 3 y 4 en mobile ── */
-@media (max-width: 768px) {
-  .problem-card-mobile-hide { display: none !important; }
-}
-/* problem-card-mobile-only: solo visible en mobile ── */
-.problem-card-mobile-only { display: none !important; }
-@media (max-width: 780px) {
-  .problem-card-mobile-only { display: flex !important; }
-}
 
 /* ── proceso_muy_largo_movil: reducir tamaño del número y padding ── */
 @media (max-width: 768px) {
   .process-num { font-size: clamp(2.8rem, 9vw, 4.5rem) !important; }
   .process-card { min-height: auto !important; padding: 18px !important; }
   #proceso { padding-top: 52px !important; }
+}
+
+/* ── quienes somos mobile ── */
+@media (max-width: 640px) {
+  #quienes .inner > div {
+    padding: 28px 24px !important;
+    text-align: left !important;
+    align-items: flex-start !important;
+  }
+  #quienes img { width: 52px !important; height: 52px !important; }
+  #quienes p { text-align: left !important; }
 }
