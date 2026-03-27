@@ -732,3 +732,9 @@
   #quienes img { width: 52px !important; height: 52px !important; }
   #quienes p { text-align: left !important; }
 }
+
+/* ── titulos_centrados_movil: centrar h2 y eyebrows en mobile ── */
+@media (max-width: 768px) {
+  h2 { text-align: center !important; }
+  .eyebrow { justify-content: center !important; text-align: center !important; }
+}
