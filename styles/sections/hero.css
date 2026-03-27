@@ -90,6 +90,10 @@
 }
 
 @media (max-width: 768px) {
+  .hero-slim .eyebrow {
+    font-size: 8px !important;
+    letter-spacing: 0.06em !important;
+  }
   .hero-slim {
     min-height: auto !important;
     padding: 52px 1.5rem 12px !important;
