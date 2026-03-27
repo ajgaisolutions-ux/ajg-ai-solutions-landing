@@ -92,6 +92,13 @@
 @media (max-width: 768px) {
   .hero-slim {
     min-height: 100svh !important;
-    padding: 52px 1.25rem 32px !important;
+    padding: 52px 2rem 32px !important;
+  }
+  .hero-slim h1 {
+    text-align: center !important;
+  }
+  .hero-copy {
+    text-align: center !important;
+    padding: 0 0.5rem;
   }
 }
