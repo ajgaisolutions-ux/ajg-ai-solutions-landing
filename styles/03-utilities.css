@@ -356,7 +356,7 @@ h2 {
 @media (hover: none) {
   .btn.primary:hover,
   .btn.secondary:hover {
-    transform: none;
+    transform: none !important;
   }
 }
 
