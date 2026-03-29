@@ -23,6 +23,7 @@
   pointer-events: none;
   transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 .nav-shell.nav-hidden {
   transform: translateY(-110%);
 }
@@ -71,7 +72,7 @@ header {
   gap: 24px;
   padding: 22px 2rem 10px;
   width: 100%;
-  max-width: 1100px;
+  max-width: 1440px;
   border-radius: 0;
   background: transparent;
   border: 1px solid transparent;
@@ -89,7 +90,7 @@ header {
 
 /* Pill state on scroll */
 body.nav-scrolled header {
-  max-width: min(780px, calc(100vw - 3rem));
+  max-width: min(960px, calc(100vw - 3rem));
   padding: 10px 18px 10px 16px;
   margin-top: 14px;
   border-radius: 999px;
