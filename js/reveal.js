@@ -24,7 +24,7 @@ export function initReveal() {
     '.metric',
     '.wf-field',
     '.bento-card',
-    '.case-card',
+    '.cases-cards',
     '.cases-header',
     'section h2',
     'section h3'
@@ -49,8 +49,7 @@ export function initReveal() {
     '.process-grid',
     '.result-grid',
     '.metrics',
-    '.stack-grid',
-    '.cases-cards'
+    '.stack-grid'
   ];
   staggerSelectors.forEach(sel => {
     try {
