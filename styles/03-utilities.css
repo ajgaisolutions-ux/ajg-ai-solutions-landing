@@ -359,3 +359,14 @@ h2 {
     transform: none;
   }
 }
+
+.btn {
+  -webkit-tap-highlight-color: transparent;
+}
+.btn.primary:active {
+  background: #38bdf8;
+  transform: none;
+}
+.btn.secondary:active {
+  transform: none;
+}
