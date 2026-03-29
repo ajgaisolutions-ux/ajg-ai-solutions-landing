@@ -191,9 +191,11 @@ h2 {
 }
 .btn.primary:hover {
   background: #7dd3fc;
-  transform: translateY(-2px);
   box-shadow: 0 12px 40px rgba(56,189,248,.38);
   transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+@media (hover: hover) {
+  .btn.primary:hover { transform: translateY(-2px); }
 }
 .btn.secondary {
   border: 1px solid rgba(255,255,255,.25);
@@ -204,10 +206,12 @@ h2 {
   backdrop-filter: blur(10px);
 }
 .btn.secondary:hover {
-  transform: translateY(-4px);
   border-color: rgba(103,232,249,.35);
   background: rgba(255,255,255,.10);
   box-shadow: 0 24px 70px rgba(8,145,178,.22);
+}
+@media (hover: hover) {
+  .btn.secondary:hover { transform: translateY(-4px); }
 }
 
 /* WhatsApp text-link */
