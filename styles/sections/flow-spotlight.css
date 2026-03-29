@@ -332,7 +332,7 @@
 }
 
 .flow-v2-card-bignum {
-  font-size: clamp(5rem, 14vw, 9rem);
+  font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 800;
   letter-spacing: -0.06em;
   line-height: 1;
@@ -457,7 +457,7 @@
     border-top-color: rgba(255,255,255,0.24);
   }
 
-  .flow-v2-card-bignum { font-size: clamp(4rem, 18vw, 7rem); }
+  .flow-v2-card-bignum { font-size: clamp(2rem, 8vw, 3.5rem); }
 
   /* Pill: hidden on tablet/mobile (no sticky scroll, pill no longer tracks position) */
   .flow-v2-pill { display: none !important; }
@@ -475,7 +475,7 @@
 
   .flow-v2-card-body { padding: 0 1.25rem 1.25rem; }
 
-  .flow-v2-card-bignum { font-size: clamp(3.5rem, 20vw, 6rem); }
+  .flow-v2-card-bignum { font-size: clamp(1.8rem, 9vw, 3rem); }
 
   .flow-metrics { grid-template-columns: repeat(3, minmax(0,1fr)) !important; }
   .flow-metric { min-width: 0; overflow: visible; padding: 0.5rem 0.3rem; }
