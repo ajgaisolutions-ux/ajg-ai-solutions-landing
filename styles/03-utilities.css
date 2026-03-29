@@ -352,3 +352,10 @@ h2 {
     text-align: center;
   }
 }
+
+@media (hover: none) {
+  .btn.primary:hover,
+  .btn.secondary:hover {
+    transform: none;
+  }
+}
