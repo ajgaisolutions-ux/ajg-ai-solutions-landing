@@ -66,9 +66,9 @@ section > div:not([class]):not([style*="position:absolute"]):not([style*="z-inde
 /* ── Header / Nav ── */
 header {
   pointer-events: auto;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
   gap: 24px;
   padding: 22px 2rem 10px;
   width: 100%;
@@ -90,11 +90,11 @@ header {
 
 /* Pill state on scroll */
 body.nav-scrolled header {
-  max-width: min(960px, calc(100vw - 3rem));
+  max-width: min(1100px, calc(100vw - 3rem));
   padding: 10px 18px 10px 16px;
   margin-top: 14px;
   border-radius: 999px;
-  background: rgba(7, 14, 32, 0.82);
+  background: rgba(7, 14, 32, 0.97);
   -webkit-backdrop-filter: blur(24px) saturate(160%);
   backdrop-filter: blur(24px) saturate(160%);
   border-color: rgba(255,255,255,0.11);
@@ -176,7 +176,7 @@ nav {
   padding: 12px 14px;
 }
 nav a {
-  color: rgba(255,255,255,.58);
+  color: rgba(255,255,255,1);
   text-decoration: none;
   font-size: 12px;
   letter-spacing: .18em;
@@ -185,9 +185,33 @@ nav a {
   white-space: nowrap;
 }
 nav a:hover { color: #fff; }
+nav a + a {
+  border-left: 1px solid rgba(255,255,255,0.14);
+  padding-left: 12px;
+}
+body.nav-scrolled nav {
+  gap: 8px;
+  padding: 8px 6px;
+}
+body.nav-scrolled header {
+  display: flex;
+  justify-content: space-between;
+}
+body.nav-scrolled nav {
+  flex: 1;
+  justify-content: center;
+}
+body.nav-scrolled nav a {
+  font-size: 12px;
+  letter-spacing: .14em;
+}
 
 
 /* ── Top CTA ── */
+.top-cta,
+.menu-btn {
+  margin-left: auto;
+}
 .top-cta {
   text-decoration: none;
   overflow: hidden;

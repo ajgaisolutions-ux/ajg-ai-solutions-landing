@@ -56,6 +56,10 @@
 
 /* ── Hide nav at tablet/mobile only ── */
 @media (max-width: 900px) {
+  header {
+    display: flex !important;
+    justify-content: space-between !important;
+  }
   header nav, .top-cta {
     display: none !important;
   }
