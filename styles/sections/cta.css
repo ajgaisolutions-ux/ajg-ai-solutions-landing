@@ -110,10 +110,13 @@
     font-size: clamp(1.8rem, 6vw, 2.2rem) !important;
   }
   .cta-panel .btn-wa {
-    width: auto !important;
     display: inline-flex !important;
-    font-size: 0.75rem !important;
-    padding: 7px 18px !important;
-    min-height: 36px !important;
+    width: auto !important;
+    border: none !important;
+    background: none !important;
+    padding: 6px 0 !important;
+    min-height: auto !important;
+    font-size: 0.72rem !important;
+    color: rgba(255,255,255,0.55) !important;
   }
 }
