@@ -220,3 +220,9 @@
     align-items: center !important;
   }
 }
+
+@media (max-width: 390px) {
+  .hero-slim h1 {
+    font-size: clamp(32px, 10.5vw, 42px) !important;
+  }
+}
