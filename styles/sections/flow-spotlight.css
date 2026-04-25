@@ -98,6 +98,7 @@
   font-size: clamp(1.3rem, 2.5vw, 1.8rem);
   font-weight: 800;
   letter-spacing: -0.02em;
+  line-height: 1.2;
   color: #f8fbff;
   margin-bottom: 1rem;
   display: block;
@@ -481,4 +482,12 @@
   .flow-metric { min-width: 0; overflow: visible; padding: 0.5rem 0.3rem; }
   .flow-metric-num { font-size: clamp(0.9rem, 4vw, 1.1rem) !important; }
   .flow-metric-label { letter-spacing: 0.02em; font-size: 0.46rem; }
+}
+
+/* ── Desktop: compact process cards ── */
+@media (min-width: 901px) {
+  .flow-v2-card { min-height: 260px; }
+  .flow-v2-card-bignum { font-size: clamp(2rem, 3.5vw, 2.8rem); }
+  .flow-v2-card-visual { padding: 1rem 1.75rem 0.75rem; }
+  .flow-v2-card-title { font-size: clamp(1.1rem, 1.8vw, 1.5rem); white-space: nowrap; }
 }

@@ -54,8 +54,8 @@ h1 {
   max-width: 860px;
   font-weight: 700;
   line-height: 1.1;
-  letter-spacing: -.03em;
-  font-size: clamp(52px, 4.9vw, 80px);
+  letter-spacing: -.045em;
+  font-size: clamp(52px, 4.9vw, 92px);
 }
 
 h2 {
@@ -63,7 +63,7 @@ h2 {
   margin: 18px 0 0;
   font-size: clamp(32px, 3vw, 48px);
   line-height: 1.16;
-  letter-spacing: -.03em;
+  letter-spacing: -.035em;
 }
 
 /* ── Highlight gradient text ── */

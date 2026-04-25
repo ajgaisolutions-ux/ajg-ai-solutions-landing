@@ -19,7 +19,7 @@
 .hero-slim {
   grid-template-columns: 1fr !important;
   min-height: calc(100vh - 82px) !important;
-  padding: 80px 2rem 80px;
+  padding: 120px 2rem 120px;
   text-align: center;
   align-items: center;
   justify-items: center;
@@ -27,17 +27,25 @@
 .hero-slim > .hero-bg,
 .hero-slim > .bg-overlay { max-width: none !important; width: 100% !important; margin: 0 !important; padding: 0 !important; }
 .hero-slim > div[style*="z-index:10"] { max-width: 860px; margin: 0 auto; width: 100%; }
-.hero-slim h1 { font-size: clamp(2.4rem, 5vw, 3.8rem); text-align: center; margin-left: auto; margin-right: auto; }
+.hero-slim h1 { font-size: clamp(2.4rem, 5vw, 3.6rem); text-align: center; margin-left: auto; margin-right: auto; }
 .hero-slim .eyebrow { text-align: center; justify-content: center; }
 .hero-slim .eyebrow::before { display: none; }
 .hero-slim .hero-copy { text-align: center; margin-left: auto; margin-right: auto; max-width: 620px; }
 .hero-slim .hero-actions { justify-content: center; }
 
+/* Cancela el padding que layout.css aplica automáticamente a section > div sin clase */
+.hero-slim > div {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
 .hero-copy {
   margin-top: 22px;
   max-width: 690px;
   color: var(--muted);
-  font-size: 20px;
+  font-size: 16px;
   line-height: 1.72;
   text-align: center;
   margin-left: auto;
@@ -90,14 +98,67 @@
   background: rgba(45,107,255,.14);
 }
 
+@media (min-width: 769px) {
+  .hero-slim {
+    padding: 80px 4rem !important;
+    min-height: auto !important;
+    justify-items: stretch !important;
+    overflow: visible !important;
+  }
+  .hero-split-inner {
+    display: grid !important;
+    grid-template-columns: 60fr 40fr !important;
+    gap: 64px !important;
+    align-items: center !important;
+    max-width: 1100px !important;
+    text-align: left !important;
+  }
+  .hero-split-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .hero-split-left .eyebrow {
+    text-align: left !important;
+    justify-content: flex-start !important;
+  }
+  .hero-split-left .eyebrow::before {
+    display: none !important;
+  }
+  .hero-slim h1 {
+    font-size: clamp(2.5rem, 3.8vw, 3.4rem) !important;
+    text-align: left !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  .hero-split-actions {
+    justify-content: flex-start !important;
+  }
+  .hero-proof {
+    justify-content: flex-start !important;
+  }
+  .hero-split-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .hero-split-right .hero-copy {
+    text-align: left !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    max-width: 100% !important;
+  }
+}
+
 @media (max-width: 768px) {
   .hero-slim .eyebrow {
-    font-size: 10px !important;
-    letter-spacing: 0.08em !important;
+    font-size: 9px !important;
+    letter-spacing: 0.04em !important;
+    margin-bottom: 8px !important;
   }
   .hero-slim {
     min-height: auto !important;
-    padding: 52px 1.5rem 12px !important;
+    padding: 64px 1.5rem 52px !important;
   }
   /* Elimina el doble padding que aplica la regla general de layout */
   .hero-slim > div {
@@ -112,8 +173,14 @@
     text-align: center !important;
   }
   .hero-copy {
-    font-size: 16px !important;
+    font-size: 13px !important;
     text-align: center !important;
     padding: 0;
+  }
+  .proof-sep { display: none !important; }
+  .hero-slim > div > div:last-child {
+    flex-direction: column !important;
+    gap: 4px !important;
+    align-items: center !important;
   }
 }
