@@ -225,4 +225,6 @@
   .hero-slim h1 {
     font-size: clamp(32px, 10.5vw, 42px) !important;
   }
+  .hero-slim .eyebrow { display: none !important; }
+  .hero-proof { display: none !important; }
 }
