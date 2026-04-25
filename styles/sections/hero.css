@@ -29,6 +29,7 @@
 .hero-slim > div[style*="z-index:10"] { max-width: 860px; margin: 0 auto; width: 100%; }
 .hero-slim h1 { font-size: clamp(2.4rem, 5vw, 3.8rem); text-align: center; margin-left: auto; margin-right: auto; }
 .hero-slim .eyebrow { text-align: center; justify-content: center; }
+.hero-slim .eyebrow::before { display: none; }
 .hero-slim .hero-copy { text-align: center; margin-left: auto; margin-right: auto; max-width: 620px; }
 .hero-slim .hero-actions { justify-content: center; }
 
