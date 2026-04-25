@@ -99,6 +99,7 @@
 }
 
 @media (min-width: 769px) {
+  .hero-copy-mobile { display: none !important; }
   .hero-slim {
     padding: 80px 4rem !important;
     min-height: auto !important;
@@ -152,9 +153,16 @@
 
 @media (max-width: 768px) {
   .hero-slim .eyebrow {
-    font-size: 9px !important;
-    letter-spacing: 0.04em !important;
-    margin-bottom: 8px !important;
+    font-size: 8px !important;
+    letter-spacing: 0.06em !important;
+    margin: 0 auto 10px !important;
+    max-width: 260px !important;
+    justify-content: center !important;
+    text-align: center !important;
+    white-space: normal !important;
+  }
+  .hero-slim .eyebrow::before {
+    display: none !important;
   }
   .hero-slim {
     min-height: auto !important;
@@ -168,7 +176,7 @@
     margin-right: auto !important;
   }
   .hero-slim h1 {
-    font-size: clamp(40px, 10.5vw, 50px) !important;
+    font-size: clamp(46px, 12vw, 58px) !important;
     line-height: 1.05 !important;
     text-align: center !important;
   }
@@ -177,7 +185,34 @@
     text-align: center !important;
     padding: 0;
   }
-  .proof-sep { display: none !important; }
+  .proof-sep { display: inline-block !important; height: 4px !important; margin: 0 6px !important; }
+  .hero-copy-mobile { display: block !important; text-align: center !important; margin-top: 20px !important; margin-bottom: 20px !important; }
+  .hero-split-right .hero-copy { display: none !important; }
+  .hero-proof {
+    justify-content: center !important;
+    gap: 0 !important;
+    margin-top: 20px !important;
+  }
+  .hero-proof span {
+    font-size: 0.55rem !important;
+    letter-spacing: 0.1em !important;
+  }
+  .hero-split-right {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+  .hero-split-right .hero-copy {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .hero-split-right > div:last-child {
+    display: flex !important;
+    justify-content: center !important;
+    width: 100% !important;
+  }
   .hero-slim > div > div:last-child {
     flex-direction: column !important;
     gap: 4px !important;

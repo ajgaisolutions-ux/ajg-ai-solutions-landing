@@ -47,6 +47,12 @@
   animation: floatA 8s ease-in-out infinite;
 }
 
+#cta h2 {
+  font-size: clamp(2.2rem, 3.8vw, 3.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
 .cta-grid {
   position: relative;
   display: grid;
@@ -97,4 +103,10 @@
   color: rgba(255,255,255,.82);
   line-height: 1.4;
   max-width: 480px;
+}
+
+@media (max-width: 768px) {
+  #cta h2 {
+    font-size: clamp(1.8rem, 6vw, 2.2rem) !important;
+  }
 }
