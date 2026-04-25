@@ -236,14 +236,15 @@ h2 {
 
 @media (max-width: 768px) {
   .btn-wa {
-    color: rgba(255,255,255,0.82);
-    border: 1px solid rgba(255,255,255,0.14);
+    color: rgba(255,255,255,0.72);
+    border: 1px solid rgba(255,255,255,0.12);
     border-radius: 999px;
-    padding: 10px 20px;
-    background: rgba(255,255,255,0.05);
-    width: 100%;
+    padding: 7px 18px;
+    background: rgba(255,255,255,0.04);
+    width: auto;
     justify-content: center;
-    min-height: 44px;
+    min-height: 36px;
+    font-size: 0.75rem;
   }
 }
 
