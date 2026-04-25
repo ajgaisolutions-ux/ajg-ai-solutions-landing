@@ -176,7 +176,7 @@
     margin-right: auto !important;
   }
   .hero-slim h1 {
-    font-size: clamp(46px, 12vw, 58px) !important;
+    font-size: clamp(38px, 10vw, 48px) !important;
     line-height: 1.05 !important;
     text-align: center !important;
   }
@@ -191,9 +191,9 @@
   .hero-proof {
     justify-content: center !important;
     gap: 0 !important;
-    margin-top: 10px !important;
+    margin-top: 8px !important;
   }
-  .hero-split-actions { margin-top: 16px !important; }
+  .hero-split-actions { margin-top: 12px !important; }
   .hero-proof span {
     font-size: 0.55rem !important;
     letter-spacing: 0.1em !important;
